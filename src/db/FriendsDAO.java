@@ -39,7 +39,7 @@ public class FriendsDAO {
 	//To view go to database in pgAdmin III > UNSWBOOK>Schema>tables>friends>view data button
 	//success
 	
-	/*
+	
 	public static void main(String[] args){
 		Friends f1 = new Friends("David Chadwick", "123456", "Male",23);
 		FriendsDAO.saveOrUpdate(f1);
@@ -47,9 +47,11 @@ public class FriendsDAO {
 		FriendsDAO.saveOrUpdate(f2);
 		Friends f3 = new Friends("Seth Myers", "123458", "Male",21);
 		FriendsDAO.saveOrUpdate(f3);
+		Friends f4 = new Friends("Lucas Elder", "123459", "Male",20);
+		FriendsDAO.saveOrUpdate(f4);
 		
 	}
-	*/
+	
 	
 	
 
