@@ -41,14 +41,18 @@ public class FriendsDAO {
 	
 	
 	public static void main(String[] args){
-		Friends f1 = new Friends("David Chadwick", "123456", "Male",23);
+		
+		Friends f1 = new Friends("David Chadwick","coolDude@gmail.com","10/10/1994",22,"Male","dChaddy","coolDude123","z1111111");
 		FriendsDAO.saveOrUpdate(f1);
-		Friends f2 = new Friends("Josh Edwards", "123457", "Male",22);
+		Friends f2 = new Friends("Seth Myers","zubbyPenguin@gmail.com","09/1/1996",21,"Male","zubbyPenguin","coolDude124","z1111112");
 		FriendsDAO.saveOrUpdate(f2);
-		Friends f3 = new Friends("Seth Myers", "123458", "Male",21);
+		Friends f3 = new Friends("Lucas Elder","elderEnterprise@gmail.com","05/2/1997",20,"Male","STARLORD","coolDude125","z1111113");
 		FriendsDAO.saveOrUpdate(f3);
-		Friends f4 = new Friends("Lucas Elder", "123459", "Male",20);
+		Friends f4 = new Friends("Josh Edwards","patriotsForever@gmail.com","04/12/1995",22,"Male","goPats","coolDude126","z1111114");
 		FriendsDAO.saveOrUpdate(f4);
+		
+		
+		
 		
 	}
 	
