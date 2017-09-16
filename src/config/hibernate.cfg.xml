@@ -23,6 +23,9 @@
 
         <!-- Annotated entity classes -->
         <mapping class="db.Friends"></mapping>
+         <mapping class="db.friendsList"></mapping>
+         <mapping class = "db.messages"></mapping>
+         <mapping class = "db.likes"></mapping>
         
     </session-factory>
 </hibernate-configuration>
