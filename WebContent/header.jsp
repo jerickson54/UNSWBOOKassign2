@@ -38,15 +38,13 @@ li a:hover:not(.active) {
     color:black;
 }
 
-
-
-
 </style>
 
 <!-- BootStrap  and jquery stuff -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <body>
 
@@ -60,7 +58,6 @@ li a:hover:not(.active) {
  	<input type = "submit" value = "Search" />
  
   </form>
-
 </ul>
 
 <div class = "jumbotron text-center" style = "box-shadow:10px 10px 5px #888888;height:50px; background-image:url(img/UNSW_logo.jpg); background-size:100% 100%;">
