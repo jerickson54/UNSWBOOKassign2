@@ -19,6 +19,9 @@ public class Friends {
 	private String password;
 	private String id;
 	
+	private static Friends newUser;
+
+	
 	
 	public Friends(String name,String emailAddress, String dob,int age,String gender,String username,String password, String id) {
 		super();
@@ -114,6 +117,21 @@ public class Friends {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+	public static Friends getNewUser() {
+		return newUser;
+	}
+
+
+	public static void setNewUser(Friends newUser) {
+		Friends.newUser = newUser;
+	}
+
+	
+
+	
+	
 	
 	
 	

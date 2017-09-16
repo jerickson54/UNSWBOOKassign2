@@ -20,11 +20,11 @@ color:blue;
 <form action = 'newUser' method = 'GET'>
 
 <label> Name: 
-<input type = "text" name = "name"/>
+<input type = "text" name = "name" required/>
 </label>
 
 <label> Email Address: 
-<input type = "text" name = "emailAddress"/>
+<input type = "text" name = "emailAddress" required/>
 </label>
 
 <label> Gender: 
@@ -64,18 +64,18 @@ color:blue;
 </label>
 
 <label> Username: 
-<input type = "text" name = "username"/>
+<input type = "text" name = "username" required/>
 </label>
 
 <label> Password: 
-<input type = "password" name = "password"/>
+<input type = "password" name = "password" required/>
 </label>
 
-<label> ZID: 
-<input type = "text" name = "zid"/>
+<label> Z-ID: 
+<input type = "text" name = "zid" required/>
 </label>
 
- <input type = "submit" value = "Search" />
+ <input type = "submit" value = "Create Account" />
  
  
  </form>

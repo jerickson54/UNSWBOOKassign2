@@ -15,7 +15,7 @@
 </head>
 <body>
 <jsp:include page = "/header.jsp"/>
-Success
+Successful account creation!
 
 </body>
 </html>
