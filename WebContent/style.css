@@ -1,0 +1,43 @@
+/*General Styling*/
+body {
+	padding-top: 70px;
+	padding-bottom: 20px;
+}
+
+/*Navigation styling*/
+.navbar-default {
+    background-color: #C63D0F;
+    border-color: none;
+}
+.navbar-default .navbar-brand {
+    background-color: #C63D0F;
+    color: white;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #C0C0C0;
+    background-color: #C63D0F;
+}
+.navbar-default .navbar-nav > li > a {
+	color: white;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #C0C0C0;
+}
+
+.navbar-default .btn-default{
+	background-color: #C63D0F;
+	color: white;
+	border-color: white;
+	border-width: 2px;
+}
+
+.navbar-default .btn-default:hover,
+.navbar-default .navbar-brand:focus {
+	background-color: white;
+	color: #C63D0F;
+	border-color: white;
+	border-width: 2px;
+}

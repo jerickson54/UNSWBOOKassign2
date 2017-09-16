@@ -39,6 +39,7 @@ function checkResults(){
 <jsp:include page = "/header.jsp"/>
 <div class="container">
 	<h2>Search Results</h2>
+	<!-- Test result -->
 	<hr>
 	<div id="results"> 
 		<div class="resultEntry">

@@ -8,7 +8,7 @@
 <title>UNSW BOOK</title>
 </head>
 <style>
-
+/*
 ul {
     list-style-type: none;
     margin: 0;
@@ -37,17 +37,44 @@ li a:hover:not(.active) {
     background-color: #ffff00;
     color:black;
 }
-
+*/
 </style>
 
 <!-- BootStrap  and jquery stuff -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <body>
 
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="default.jsp">Home</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">My Profile</a></li>
+        <li><a href="#">Advanced Search</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" action="searchServlet" method="GET">
+        <div class="form-group">
+          <input type="text" class="form-control" id="searchBar" name="searchInput" placeholder="Search friends">
+        </div>
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+    </div>
+  </div>
+</nav>
+<!--
 <ul>
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="#news">My Profile</a></li>
@@ -59,8 +86,10 @@ li a:hover:not(.active) {
  
   </form>
 </ul>
+-->
 
-<div class = "jumbotron text-center" style = "box-shadow:10px 10px 5px #888888;height:50px; background-image:url(img/UNSW_logo.jpg); background-size:100% 100%;">
+
+<div class = "jumbotron text-center" style = "box-shadow:10px 10px 5px #888888;height:50px; background-image:url(img/UNSW_logo.jpg); background-size:auto 100%;">
 </div>
 
 </body>
