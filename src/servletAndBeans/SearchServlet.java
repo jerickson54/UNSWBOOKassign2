@@ -9,17 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.*;
+
+import db.Friends;
+import db.FriendsDAO;
+
 /**
  * Servlet implementation class searchServlet
  */
-@WebServlet("/searchServlet")
-public class searchServlet extends HttpServlet {
+@WebServlet("/search")
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public searchServlet() {
+    public SearchServlet() {
         super();
     }
 
@@ -28,9 +33,11 @@ public class searchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Search stuff here!");
-		String searchInput =  request.getParameter("searchInput").toLowerCase().trim();
+		String searchInput =  request.getParameter("searchInput").trim();
 		
-		//TODO Search for people and load results into a bean
+		List<Friends> results = FriendsDAO.search(searchInput);
+		
+		request.setAttribute("results", results);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("results.jsp");
 		rd.forward(request, response);
