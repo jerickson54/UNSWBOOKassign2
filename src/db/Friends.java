@@ -22,7 +22,8 @@ public class Friends {
 	private static Friends newUser;
 
 	
-	
+	public Friends() {}
+	//Added default constructor needed for storing of query result
 	public Friends(String name,String emailAddress, String dob,int age,String gender,String username,String password, String id) {
 		super();
 		this.name = name;

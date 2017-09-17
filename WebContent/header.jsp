@@ -65,7 +65,7 @@ li a:hover:not(.active) {
         <li><a href="#">My Profile</a></li>
         <li><a href="#">Advanced Search</a></li>
       </ul>
-      <form class="navbar-form navbar-left" action="searchServlet" method="GET">
+      <form class="navbar-form navbar-left" action="search" method="GET">
         <div class="form-group">
           <input type="text" class="form-control" id="searchBar" name="searchInput" placeholder="Search friends">
         </div>

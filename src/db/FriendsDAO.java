@@ -1,6 +1,14 @@
 package db;
 
+import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class FriendsDAO {
 	
@@ -33,12 +41,36 @@ public class FriendsDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-	
+
+	@SuppressWarnings("rawtypes")
+	public static List<Friends> search(String name){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<Friends> returnList = new ArrayList<Friends>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM Friends WHERE name = :name");
+			//Query query = session.createQuery("FROM Friends");
+			query.setParameter("name", name);
+		
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				Friends user = (Friends) iterator.next();
+				returnList.add(user);
+			}
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+		}finally {
+			session.close();
+		}
+		return returnList;
+	}
 	
 	//already populated successfully. Note might want to store all this info in xml file. IDK
 	//To view go to database in pgAdmin III > UNSWBOOK>Schema>tables>friends>view data button
 	//success
-	
 	
 	public static void main(String[] args){
 		

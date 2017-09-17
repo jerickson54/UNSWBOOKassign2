@@ -1,31 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>UNSW Book</title>
-<style>
-.imageContainer {
-	display: inline-block;
-	width: 110px;
-	height: 110px;
-}
-
-.imageContainer img{
-	max-width: 100%;
-	max-height: 100%;
-}
-
-.contentContainer{
-	display: inline-block;
-	margin-left: 15px;
-}
-
-.resultEntry{
-	display: flex;
-}
-</style>
 <script>
 function checkResults(){
 	var results = $('.resultEntry').length;
@@ -39,19 +19,21 @@ function checkResults(){
 <jsp:include page = "/header.jsp"/>
 <div class="container">
 	<h2>Search Results</h2>
-	<!-- Test result -->
 	<hr>
 	<div id="results"> 
-		<div class="resultEntry">
-			<div class="imageContainer">
-				<a href="#"><img src="img/PN.jpg"></a>
+		<c:forEach items="${results}" var="entry">
+			<div class="resultEntry">
+				<div class="imageContainer">
+					<a href="profile?id=${entry.id}"><img src="img/profile_pictures/default-user.png"></a>
+				</div>
+				<div class="contentContainer">
+					<a href="profile?id=${entry.id}"><h4>${entry.name}</h4></a>
+					<p>${entry.gender}</p>
+					<a href="#" class="btn btn-info" role="button">Add as friend</a>
+				</div>
 			</div>
-			<div class="contentContainer">
-				<a href="#"><h4>Patrik Norlin</h4></a>
-				<span>Sydney</span>
-			</div>
-		</div>
-		<hr>
+			<hr>
+		</c:forEach>
 	</div>
 </div>
 
