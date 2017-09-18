@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css' rel='stylesheet' />
@@ -74,12 +75,12 @@
         }
 
         .speech-bubble {
-            position: relative;
-            height: 70%;
             width: 95%;
+            height: 80%;
             margin-left: 2%;
-            margin-top: 2%;
-            background: #30baba;
+            margin-top: 1%;
+            position: relative;
+            background: #00aabb;
             border-radius: .4em;
         }
 
@@ -90,32 +91,90 @@
             top: 50%;
             width: 0;
             height: 0;
-            border: 27px solid transparent;
-            border-right-color: #30baba;
+            border: 24px solid transparent;
+            border-right-color: #00aabb;
             border-left: 0;
-            border-top: 0;
-            margin-top: -13.5px;
-            margin-left: -27px;
+            border-bottom: 0;
+            margin-top: -12px;
+            margin-left: -24px;
         }
 
+        #userMessagesBox {
+            width: 95%;
+            margin-left: 2%;
+            margin-top: 1%;
 
+        }
+
+        #messagesHeading{
+            font-size: 2em;
+        }
+
+        .nav ul li:last-child {
+            float: right;
+        }
+
+        #searchFriendForm{
+            width: 70%
+        }
+
+        #searchInput{
+            width: 92%;
+        }
+
+        #logoutButton {
+            margin-top: 1%;
+            width: 2.5%;
+            height: 4%;
+        }
+
+        #searchInputText{
+            width:100%;
+        }
+
+        #logo{
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        #logout{
+            margin-left: 4%;
+        }
+
+        #messageBox{
+            resize: none;
+            margin-left: 0.5%;
+            margin-top: 0.5%;
+            width: 98%;
+            height: 90%;
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0)
+        }
 
     </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse" style="border-radius:0;">
     <div class="container-fluid">
-        <div class="navbar-header">
+        <div class="navbar-header" id="logo">
             <a class="navbar-brand" href="/">UNSWBook</a>
         </div>
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" id="homeButton">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="search.jsp">Search</a></li>
-            <li><a href="#">Site Map</a></li>
-            <li><a href="#">Log Out -> </a></li>
         </ul>
+        <form class="navbar-form navbar-left" id="searchFriendForm">
+            <div class="form-group" id="searchInput">
+                <input type="text" class="form-control" placeholder="Search" id="searchInputText">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav" id="logout">
+            <li><a href="#">Logout</a></li>
+        </ul>
+        <img id="logoutButton" src="http://www.free-icons-download.net/images/logout-button-icon-76344.png">
     </div>
 </nav>
+
 <div id="userWall">
     <div id="bannerDiv">
         <div id="banner">
@@ -125,13 +184,14 @@
             </div><div id="otherDetails">
             Other Details Go here
         </div>
-
         </div>
     </div>
     <div id="wall">
         <div id="messageBanner">
-            <p class="speech-bubble">What are your thoughts today?!</p>
-
+            <div class="speech-bubble"><textarea id="messageBox" placeholder="What are your thoughts today?"></textarea></div>
+        </div>
+        <div id="userMessagesBox">
+            <p id="messagesHeading">Your Thoughts So Far</p>
         </div>
 
     </div>
