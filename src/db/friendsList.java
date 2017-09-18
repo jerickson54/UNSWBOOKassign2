@@ -21,6 +21,10 @@ public class friendsList {
 	private String Friendid1;
 	private String Friendid2;
 	
+	//Added default constructor
+	public friendsList() {
+		
+	}
 	
 	public friendsList(String Friendid1, String Friendid2) {
 		super();

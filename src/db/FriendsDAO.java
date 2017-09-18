@@ -50,8 +50,54 @@ public class FriendsDAO {
 		try {
 			tx = session.beginTransaction();
 			Query query = session.createQuery("FROM Friends WHERE name = :name");
-			//Query query = session.createQuery("FROM Friends");
 			query.setParameter("name", name);
+		
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				Friends user = (Friends) iterator.next();
+				returnList.add(user);
+			}
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+		}finally {
+			session.close();
+		}
+		return returnList;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public static List<Friends> searchAdvanced(String name, String gender, String date, String username, String id){
+		//Build the query string depending on what parameters left blank
+		StringBuilder sb = new StringBuilder();
+		List<String> queryParts = new ArrayList<String>();
+		sb.append("FROM Friends WHERE");
+		if (!name.equals("")) queryParts.add("name = :name");	
+		if (!gender.equals("")) queryParts.add("gender = :gender");
+		if(!date.equals("")) queryParts.add("dob = :dob");
+		if (!username.equals("")) queryParts.add("username = :username");
+		if (!id.equals("")) queryParts.add("id = :id");
+		
+		for (int i = 0; i < queryParts.size(); i++) {
+			sb.append(" " + queryParts.get(i));
+			if (i+1 != queryParts.size()) {
+				sb.append(" and");
+			}
+		}
+		
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<Friends> returnList = new ArrayList<Friends>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery(sb.toString());
+			//add parameters depending on what parameters left blank
+			if (! name.equals("")) query.setParameter("name", name);
+			if (! gender.equals("")) query.setParameter("gender", gender);
+			if (! date.equals("")) query.setParameter("dob", date);
+			if (! username.equals("")) query.setParameter("username", username);
+			if (! id.equals("")) query.setParameter("id", id);
 		
 			List list = query.list();
 			for (Iterator iterator = list.iterator(); iterator.hasNext();){

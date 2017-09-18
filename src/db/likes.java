@@ -21,6 +21,10 @@ public class likes {
 			//used a string because that is the zid for Friends.java
 			private String userID;
 			
+			//Added default constructor
+			public likes() {
+				
+			}
 			public likes(int messageID, String userID) {
 				super();
 				this.messageID = messageID;

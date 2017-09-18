@@ -16,17 +16,19 @@ body {
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-    color: #C0C0C0;
-    background-color: #C63D0F;
+    color: #C63D0F;
+    background-color: white;
 }
 .navbar-default .navbar-nav > li > a {
 	color: white;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #C0C0C0;
+    color: #C63D0F;
+    background-color: white;
 }
 
+/*Search button styling*/
 .navbar-default .btn-default{
 	background-color: #C63D0F;
 	color: white;
@@ -35,13 +37,32 @@ body {
 }
 
 .navbar-default .btn-default:hover,
-.navbar-default .navbar-brand:focus {
+.navbar-default .btn-default:focus {
 	background-color: white;
 	color: #C63D0F;
 	border-color: white;
 	border-width: 2px;
 }
 
+/*Hamburger styling*/
+.navbar-default .navbar-toggle {
+    border-color: white;
+    border-width: 2px;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: white;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar,
+.navbar-default .navbar-toggle:focus .icon-bar{
+	background-color: #C63D0F;
+}
+
+/*End of navigation styling*/
 
 /*Search Results styling*/
 .imageContainer {
@@ -62,4 +83,9 @@ body {
 
 .resultEntry{
 	display: flex;
+}
+
+/*Form group styling*/
+.form-horizontal .control-label{
+	text-align: left;
 }

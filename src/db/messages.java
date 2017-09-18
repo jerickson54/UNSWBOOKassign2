@@ -20,6 +20,10 @@ public class messages {
 		private String userID;
 		private String message;
 		
+		//Added default constructor
+		public messages() {
+			
+		}
 		public messages(String userID, String message) {
 			super();
 			this.userID = userID;

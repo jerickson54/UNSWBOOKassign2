@@ -63,7 +63,11 @@ li a:hover:not(.active) {
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
         <li><a href="#">My Profile</a></li>
-        <li><a href="#">Advanced Search</a></li>
+        <li><a href="advancedSearch.jsp">Advanced Search</a></li>
+        <!-- Bell for notifications? -->
+        <li>
+        <a href="#"><span class="glyphicon glyphicon-bell" style="font-size:20px"></span></a>
+        </li>
       </ul>
       <form class="navbar-form navbar-left" action="search" method="GET">
         <div class="form-group">
