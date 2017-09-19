@@ -68,6 +68,8 @@ li a:hover:not(.active) {
         <li>
         <a href="#"><span class="glyphicon glyphicon-bell" style="font-size:20px"></span></a>
         </li>
+        <li>
+        <a href = "login.jsp"> New User</a>
       </ul>
       <form class="navbar-form navbar-left" action="search" method="GET">
         <div class="form-group">
@@ -78,19 +80,7 @@ li a:hover:not(.active) {
     </div>
   </div>
 </nav>
-<!--
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">My Profile</a></li>
-  <li><a href="#contact">Search</a></li>
-  <form action = 'searchServlet' method = 'GET'>
-  
-  <input type = "text" id = "searchBar" name = "searchInput" placeholder = "Search friends" />
- 	<input type = "submit" value = "Search" />
- 
-  </form>
-</ul>
--->
+
 
 
 <div class = "jumbotron text-center" style = "box-shadow:10px 10px 5px #888888;height:50px; background-image:url(img/UNSW_logo.jpg); background-size:auto 100%;">
