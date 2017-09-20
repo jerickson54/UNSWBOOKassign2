@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -85,8 +86,21 @@ public class newUser extends HttpServlet {
 			age = now.getYear()-Integer.parseInt(year);
 		
 		Friends newFriend = new Friends(name,emailAddress,dob,age,gender,username,password,zid);
-		Friends.setNewUser(newFriend);
 		
+		//Create or get the bean with all tokens stored
+		NewUsersBean tokens;
+		tokens = (NewUsersBean) getServletContext().getAttribute("newUsers");
+		if (tokens == null) {
+			getServletContext().setAttribute("newUsers", new NewUsersBean());
+			tokens = (NewUsersBean) getServletContext().getAttribute("newUsers");	
+		}
+		
+		//Generate random token
+		Random rand = new Random();
+		String token = String.valueOf(rand.nextInt(999999999));
+		
+		//add the friend to the tokens bean
+		tokens.addUser(token, newFriend);
 		
 		//try to send an email
 		String from = "unswbooksocialmedia@gmail.com";
@@ -120,8 +134,8 @@ public class newUser extends HttpServlet {
          message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));    
          message.setSubject(sub);
          message.setContent("<img src = \"WebContent/img/UNSW_logo.jpg\"> <h1> Welcome to UNSWBOOK </h1><p>" + msg+  "</p> "
-         		+ "<a href = \"http://localhost:8080/UNSWBOOKASSIGN2/newUserCreation\">Confirm Account</a>","text/html");
-         
+         		+ "<a href = \"http://localhost:8080/UNSWBOOKASSIGN2/newUserCreation?token="+ token + "\">Confirm Account</a>","text/html");
+
          
          //send message  
          Transport.send(message);    

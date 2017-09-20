@@ -18,8 +18,6 @@ public class Friends {
 	private String username;
 	private String password;
 	private String id;
-	
-	private static Friends newUser;
 
 	
 	public Friends() {}
@@ -117,16 +115,6 @@ public class Friends {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-
-	public static Friends getNewUser() {
-		return newUser;
-	}
-
-
-	public static void setNewUser(Friends newUser) {
-		Friends.newUser = newUser;
 	}
 
 	

@@ -1,4 +1,4 @@
-package db;
+package servletAndBeans;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import db.FriendsDAO;
+import db.Friends;
 
 /**
  * Servlet implementation class newUserCreation
@@ -27,12 +30,25 @@ public class newUserCreation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//get hashMap
+		NewUsersBean tokens;
+		tokens = (NewUsersBean) getServletContext().getAttribute("newUsers");
+		if (tokens == null) {
+			getServletContext().setAttribute("newUsers", new NewUsersBean());
+			tokens = (NewUsersBean) getServletContext().getAttribute("newUsers");	
+		}
 		
-		Friends toCreate = Friends.getNewUser();
-		System.out.println(toCreate.getName());
-		FriendsDAO.saveOrUpdate(toCreate);
-		 request.getRequestDispatcher("/default.jsp").forward(request,response);
+		//get token from link
+		String token = (String) request.getAttribute("token");
 		
+		Friends toCreate = tokens.getUser(token);
+		
+		if (toCreate != null) {
+			System.out.println(toCreate.getName());
+			FriendsDAO.saveOrUpdate(toCreate);
+			request.getRequestDispatcher("/default.jsp").forward(request,response);
+		}
+		request.getRequestDispatcher("/default.jsp").forward(request,response);
 	}
 
 	/**
