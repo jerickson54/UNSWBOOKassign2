@@ -112,7 +112,6 @@ public class Friends {
 		return password;
 	}
 
-
 	public void setPassword(String password) {
 		this.password = password;
 	}

@@ -10,7 +10,7 @@
 <jsp:include page = "/header.jsp"/>
 <div class="container">
 	<h2>Advanced Search</h2>
-	<form class="form-horizontal" action="AdvancedSearch" method="GET">
+	<form class="form-horizontal" action="controller?action=advancedSearch" method="POST">
 		<div class="form-group">
 		  <label for="name" class="control-label col-sm-2">Name</label>
 		  <div class="col-sm-10">

@@ -14,8 +14,88 @@
 
 </head>
 <body>
-<jsp:include page = "/header.jsp"/>
-Successful account creation!
+<div class="container">
+	<h1>Welcome to UNSW Book, Login or register a new user</h1>
+	<h2>Login</h2>
+	<form>
+	<label>Username:
+		<input type = "text" name="username" required/>
+	</label>
+	<label>Password
+	<input type="password" name="password" required/>
+	</label>
+	<input type = "submit" value = "Login" />
+	</form>
+	<h2>Register</h2>
 
+<form action = 'controller?action=register' method = 'post'>
+
+<label> Name: 
+<input type = "text" name = "name" required/>
+</label>
+
+<label> Email Address: 
+<input type = "text" name = "emailAddress" required/>
+</label>
+
+<label> Gender: 
+<select id ="gender" name = "gender">
+<option value = "Male" >Male</option>
+<option value = "Female">Female</option>
+</select>
+</label>
+
+<label> Date of birth: 
+<select id = "month" name = "month">
+<option value = "1" >January</option>
+<option value = "2">February</option>
+<option value = "3">March</option>
+<option value = "4">April</option>
+<option value = "5">May</option>
+<option value = "6">June</option>
+<option value = "7">July</option>
+<option value = "8">August</option>
+<option value = "9">September</option>
+<option value = "10">October</option>
+<option value = "11">November</option>
+<option value = "12">December</option>
+</select>
+
+<select id ="day" name = "day">
+<c:forEach begin = "1" end="31" varStatus = "loop">
+<option value = "${loop.index}">${loop.index}</option>
+</c:forEach>
+</select>
+
+<select id ="year" name = "year">
+<c:forEach begin = "1900" end="2017" varStatus = "loop2">
+<option value = "${loop2.index}">${loop2.index}</option>
+</c:forEach>
+</select>
+</label>
+
+<label> Username: 
+<input type = "text" name = "username" required/>
+</label>
+
+<label> Password: 
+<input type = "password" name = "password" required/>
+</label>
+
+<label> Z-ID: 
+<input type = "text" name = "zid" required/>
+</label>
+
+ <input type = "submit" value = "Create Account" />
+ </form>
+
+		<h3>Profile Picture Upload:</h3>
+      	<br />
+	<form action = "uploadServlet" method = "post" enctype = "multipart/form-data">
+     	<input type = "file" name = "file" size = "50" />
+    		<br />
+    		<input type = "submit" value = "Upload File" />
+	</form>
+</div>
 </body>
 </html>

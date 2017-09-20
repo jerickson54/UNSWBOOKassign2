@@ -1,48 +1,29 @@
 package servletAndBeans;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
-
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
 
 import db.Friends;
 
+public class RegisterCommand implements Command {
 
-/**
- * Servlet implementation class newUser
- */
-@WebServlet("/newUser")
-public class newUser extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public newUser() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		LocalDateTime now = LocalDateTime.now();
 		int age;
 		
@@ -89,10 +70,10 @@ public class newUser extends HttpServlet {
 		
 		//Create or get the bean with all tokens stored
 		NewUsersBean tokens;
-		tokens = (NewUsersBean) getServletContext().getAttribute("newUsers");
+		tokens = (NewUsersBean) request.getServletContext().getAttribute("newUsers");
 		if (tokens == null) {
-			getServletContext().setAttribute("newUsers", new NewUsersBean());
-			tokens = (NewUsersBean) getServletContext().getAttribute("newUsers");	
+			request.getServletContext().setAttribute("newUsers", new NewUsersBean());
+			tokens = (NewUsersBean) request.getServletContext().getAttribute("newUsers");	
 		}
 		
 		//Generate random token
@@ -134,28 +115,14 @@ public class newUser extends HttpServlet {
          message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));    
          message.setSubject(sub);
          message.setContent("<img src = \"WebContent/img/UNSW_logo.jpg\"> <h1> Welcome to UNSWBOOK </h1><p>" + msg+  "</p> "
-         		+ "<a href = \"http://localhost:8080/UNSWBOOKASSIGN2/newUserCreation?token="+ token + "\">Confirm Account</a>","text/html");
+         		+ "<a href = \"http://localhost:8080/UNSWBOOKASSIGN2/controller?action=confirmNewUser&token="+ token + "\">Confirm Account</a>","text/html");
 
-         
          //send message  
          Transport.send(message);    
          System.out.println("Message sent successfully");    
         } catch (MessagingException e) {throw new RuntimeException(e);}    
 		
-        request.getRequestDispatcher("/emailSend.jsp").forward(request,response);
-		
-		
-		
-	
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+        return "/emailSend.jsp";
 	}
 
 }
