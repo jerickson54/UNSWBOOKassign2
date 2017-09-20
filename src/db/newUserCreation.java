@@ -30,7 +30,6 @@ public class newUserCreation extends HttpServlet {
 		
 		Friends toCreate = Friends.getNewUser();
 		System.out.println(toCreate.getName());
-		//TODO add to database here
 		FriendsDAO.saveOrUpdate(toCreate);
 		 request.getRequestDispatcher("/default.jsp").forward(request,response);
 		

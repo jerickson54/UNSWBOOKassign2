@@ -52,7 +52,19 @@ public class newUser extends HttpServlet {
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		String year = request.getParameter("year");
-		String dob = "0"+month+"/"+day+"/"+year;
+		if(Integer.parseInt(month) < 10){
+			String temp = month;
+			month = "0";
+			month+=temp;
+		}
+		
+		if(Integer.parseInt(day) < 10){
+			String temp = day;
+			day = "0";
+			day+=temp;
+		}
+		
+		String dob = year + "-" + month + "-" + day;
 		
 		
 		
