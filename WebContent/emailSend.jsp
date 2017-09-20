@@ -8,6 +8,8 @@
 </head>
 <body>
 <jsp:include page = "/header.jsp"/>
-<h1> An email has been sent to your email address to confirm your account. Please confirm your account.</h1>
+<div class="container">
+	<h2> An email has been sent to your email address to confirm your account. Please confirm your account.</h2>
+</div>
 </body>
 </html>

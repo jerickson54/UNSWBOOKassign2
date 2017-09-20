@@ -7,38 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>UNSW BOOK</title>
 </head>
-<style>
-/*
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #ffff00;
-    color:black;
-}
-*/
-</style>
 
 <!-- BootStrap  and jquery stuff -->
 <!-- Latest compiled and minified CSS -->
@@ -68,10 +36,8 @@ li a:hover:not(.active) {
         <li>
         <a href="#"><span class="glyphicon glyphicon-bell" style="font-size:20px"></span></a>
         </li>
-        <li>
-        <a href = "login.jsp"> New User</a>
       </ul>
-      <form class="navbar-form navbar-left" action="search" method="GET">
+      <form class="navbar-form navbar-left" action="controller?action=search" method="post">
         <div class="form-group">
           <input type="text" class="form-control" id="searchBar" name="searchInput" placeholder="Search friends">
         </div>

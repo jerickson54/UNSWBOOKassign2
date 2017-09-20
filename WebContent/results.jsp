@@ -24,10 +24,10 @@ function checkResults(){
 		<c:forEach items="${results}" var="entry">
 			<div class="resultEntry">
 				<div class="imageContainer">
-					<a href="profile?id=${entry.id}"><img src="img/profile_pictures/default-user.png"></a>
+					<a href="controller?action=profile&id=${entry.id}"><img src="img/profile_pictures/default-user.png"></a>
 				</div>
 				<div class="contentContainer">
-					<a href="profile?id=${entry.id}"><h4>${entry.name}</h4></a>
+					<a href="controller?action=profile&id=${entry.id}"><h4>${entry.name}</h4></a>
 					<p>${entry.gender}</p>
 					<a href="#" class="btn btn-info" role="button">Add as friend</a>
 				</div>

@@ -46,6 +46,8 @@ public class uploadServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//TODO: Include this in the RegisterCommand
 		//save dynamically based on class location
 		URL url =Friends.class.getResource("../../../img/profile_pictures/");
 		String file = url.getPath();
