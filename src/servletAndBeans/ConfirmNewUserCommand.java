@@ -31,10 +31,9 @@ public class ConfirmNewUserCommand implements Command {
 		if (toCreate != null) {
 			System.out.println(toCreate.getName());
 			FriendsDAO.saveOrUpdate(toCreate);
-			return "/default.jsp";
+			return "/emailConfirmed.jsp";
 		}
 		
 		return null;
 	}
-
 }
