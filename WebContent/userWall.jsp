@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page import="servletAndBeans.*"%>
 <html>
 <head>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css' rel='stylesheet' />
@@ -175,9 +175,9 @@
         <div id="banner">
             <img id="profileImage" src="http://cdn2-www.dogtime.com/assets/uploads/gallery/pug-dog-breed-pictures/2-face.jpg">
             <div id="name">
-                Jason Le
+                ${wall.name}
             </div><div id="otherDetails">
-                <div>zID:  </div>
+                <div>zID:  ${wall.userID}</div>
                 <div>DOB:  </div>
                 <div>Email:  </div>
 
