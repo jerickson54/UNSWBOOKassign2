@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="config:hibernate.cfg.xml/Hibernate" uuid="0faa8e89-4a77-41a3-955f-9f87d09aea9c">
+      <database-info product="PostgreSQL" version="9.6.4" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>postgres</user-name>
+      <introspection-schemas>UNSWBOOK:public</introspection-schemas>
+    </data-source>
+    <data-source name="target:classes:config:hibernate.cfg.xml/Hibernate" uuid="f31d5b40-2a99-41fb-81c0-37c75b996367">
+      <database-info product="PostgreSQL" version="9.6.4" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>postgres</user-name>
+      <introspection-schemas>UNSWBOOK:public</introspection-schemas>
+    </data-source>
+  </component>
+</project>

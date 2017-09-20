@@ -197,8 +197,7 @@
             <p id="messagesHeading">Your Thoughts So Far</p>
             <div id="messages">
                 <div class="singleMessageBox">
-
-                    <div class="likes"> noob pls </div>
+                    
                 </div>
 
                 <div class="singleMessageBox">

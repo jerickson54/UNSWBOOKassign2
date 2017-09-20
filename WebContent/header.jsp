@@ -81,10 +81,5 @@ li a:hover:not(.active) {
   </div>
 </nav>
 
-
-
-<div class = "jumbotron text-center" style = "box-shadow:10px 10px 5px #888888;height:50px; background-image:url(img/UNSW_logo.jpg); background-size:auto 100%;">
-</div>
-
 </body>
 </html>
