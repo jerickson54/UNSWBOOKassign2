@@ -23,7 +23,7 @@
             overflow:auto;
         }
         #banner {
-            background-color: red;
+            background-color: #303031;
             width: 100%;
             height: 100%;
             overflow: visible;
@@ -40,18 +40,24 @@
         }
 
         #name {
-            background-color: green;
+            background-color: #303031;
             margin-top: 10px;
             width: 100%;
             height: 10%;
+            font-size: 2em;
+            color: white;
+            text-align: center;
 
         }
 
         #otherDetails {
-            background-color: blue;
+            background-color: #303031;
             margin-top: 10px;
             width: 100%;
             height: 20%;
+            margin-left: 20px;
+            color: white;
+            font-size: 1em;
 
         }
 
@@ -59,16 +65,17 @@
             width: 83%;
             height: 100%;
             margin-left: 17%;
-            background-color: purple;
+            background-color: white;
             position: absolute;
             overflow: auto;
         }
 
 
         #messageBanner{
+            color: white;
             width: 100%;
             height: 30%;
-            background-color: black;
+            background-color: #303031;
             position: relative;
             overflow: auto;
 
@@ -76,11 +83,11 @@
 
         .speech-bubble {
             width: 95%;
-            height: 80%;
+            height: 70%;
             margin-left: 2%;
-            margin-top: 1%;
+            margin-top: 1.5%;
             position: relative;
-            background: #00aabb;
+            background: #C63D0F;
             border-radius: .4em;
         }
 
@@ -92,7 +99,7 @@
             width: 0;
             height: 0;
             border: 24px solid transparent;
-            border-right-color: #00aabb;
+            border-right-color: #C63D0F;
             border-left: 0;
             border-bottom: 0;
             margin-top: -12px;
@@ -114,34 +121,8 @@
             float: right;
         }
 
-        #searchFriendForm{
-            width: 70%
-        }
-
-        #searchInput{
-            width: 92%;
-        }
-
-        #logoutButton {
-            margin-top: 1%;
-            width: 2.5%;
-            height: 4%;
-        }
-
-        #searchInputText{
-            width:100%;
-        }
-
-        #logo{
-            margin-left: 25px;
-            margin-right: 25px;
-        }
-
-        #logout{
-            margin-left: 4%;
-        }
-
         #messageBox{
+            color: white;
             resize: none;
             margin-left: 0.5%;
             margin-top: 0.5%;
@@ -151,47 +132,89 @@
             border-color: rgba(0, 0, 0, 0)
         }
 
+        textarea::-webkit-input-placeholder {
+            color: white !important;
+        }
+
+        #messageSubmit {
+            margin: 0.75% 5% 0 0;
+            float: right;
+            background-color: #C63D0F;
+            color: white;
+            border-radius: 18px;
+            -moz-border-radius: 5px;
+            border-color: #C63D0F;
+        }
+
+        .singleMessageBox {
+            margin-top: 2%;
+            border-radius: 25px;
+            border: 2px solid #C63D0F;
+            padding: 20px;
+            width: 80%;
+            height: 150px;
+            box-shadow: 0 4px 2px -2px #C63D0F;
+            position: relative
+        }
+
+        .likes{
+            position: absolute;
+            bottom: 0;
+            margin-bottom: 5px;
+            width: 100%;
+            height: 10px;
+            background-color: #C63D0F;
+        }
+
     </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse" style="border-radius:0;">
-    <div class="container-fluid">
-        <div class="navbar-header" id="logo">
-            <a class="navbar-brand" href="/">UNSWBook</a>
-        </div>
-        <ul class="nav navbar-nav" id="homeButton">
-            <li class="active"><a href="#">Home</a></li>
-        </ul>
-        <form class="navbar-form navbar-left" id="searchFriendForm">
-            <div class="form-group" id="searchInput">
-                <input type="text" class="form-control" placeholder="Search" id="searchInputText">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-        <ul class="nav navbar-nav" id="logout">
-            <li><a href="#">Logout</a></li>
-        </ul>
-        <img id="logoutButton" src="http://www.free-icons-download.net/images/logout-button-icon-76344.png">
-    </div>
-</nav>
 
-<div id="userWall">
+<jsp:include page = "/header.jsp"/><div id="userWall">
     <div id="bannerDiv">
         <div id="banner">
             <img id="profileImage" src="http://cdn2-www.dogtime.com/assets/uploads/gallery/pug-dog-breed-pictures/2-face.jpg">
             <div id="name">
-                USERS NAME GOES HERE
+                Jason Le
             </div><div id="otherDetails">
-            Other Details Go here
-        </div>
+                <div>zID:  </div>
+                <div>DOB:  </div>
+                <div>Email:  </div>
+
+            </div>
         </div>
     </div>
     <div id="wall">
         <div id="messageBanner">
-            <div class="speech-bubble"><textarea id="messageBox" placeholder="What are your thoughts today?"></textarea></div>
+            <form>
+            <div class="speech-bubble">
+                <textarea id="messageBox" placeholder="What are your thoughts today?"></textarea>
+            </div>
+                <input type="submit" value="Submit" id="messageSubmit">
+            </form>
         </div>
         <div id="userMessagesBox">
             <p id="messagesHeading">Your Thoughts So Far</p>
+            <div id="messages">
+                <div class="singleMessageBox">
+
+                    <div class="likes"> noob pls </div>
+                </div>
+
+                <div class="singleMessageBox">
+
+                </div>
+
+                <div class="singleMessageBox">
+
+                </div>
+
+                <div class="singleMessageBox">
+
+                </div>
+
+
+            </div>
         </div>
 
     </div>
@@ -200,4 +223,3 @@
 
 </body>
 </html>
-
