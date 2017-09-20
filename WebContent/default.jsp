@@ -4,8 +4,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
-
-
 </style>
 
 <head>
@@ -17,7 +15,7 @@
 <div class="container">
 	<h1>Welcome to UNSW Book, Login or register a new user</h1>
 	<h2>Login</h2>
-	<form>
+	<form action = 'controller?action=login' method = 'post'>
 	<label>Username:
 		<input type = "text" name="username" required/>
 	</label>

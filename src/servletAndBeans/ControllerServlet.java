@@ -27,14 +27,10 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("search", new SearchCommand());
 		commands.put("advancedSearch", new AdvancedSearchCommand());
 		commands.put("profile", new ProfileCommand());
-		commands.put("wall", new WallCommand());
-		
-		
-		/*
-		Implement these in the future
+		commands.put("wall", new WallCommand());	
 		commands.put("login", new LoginCommand());
-		commands.put("logout", new LogoutCommand());
-		*/
+		//commands.put("logout", new LogoutCommand());
+		
 	}
 	/** 
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

@@ -16,7 +16,7 @@ public class SearchCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String searchInput =  request.getParameter("searchInput").trim();
 		
 		List<Friends> results = FriendsDAO.search(searchInput);

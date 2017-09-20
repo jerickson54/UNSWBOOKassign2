@@ -41,6 +41,31 @@ public class FriendsDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public static Friends loginUser(String username, String password){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		Friends result = null;
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			Query q = session.createQuery("FROM Friends WHERE username = :username AND password = :password");
+			q.setParameter("username", username);
+			q.setParameter("password", password);
+			List list = q.list();
+			for(Iterator iterator = list.iterator();iterator.hasNext();){
+				Friends user = (Friends)iterator.next();
+				result = user;
+			}
+			tx.commit();
+		}catch(HibernateException e){
+			if(tx!=null)tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return result;
+	}
 
 	@SuppressWarnings("rawtypes")
 	public static List<Friends> search(String name){
