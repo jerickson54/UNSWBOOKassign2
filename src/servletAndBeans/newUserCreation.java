@@ -39,7 +39,7 @@ public class newUserCreation extends HttpServlet {
 		}
 		
 		//get token from link
-		String token = (String) request.getAttribute("token");
+		String token = (String) request.getParameter("token");
 		
 		Friends toCreate = tokens.getUser(token);
 		
