@@ -15,8 +15,8 @@
 </head>
 <body>
 <div class="container">
-<h2>You're email has been confirmed!</h2>
-<p><a href="controller">Log in</a></p>
+	<h2>You're email has been confirmed!</h2>
+	<p><a href="controller">Log in</a></p>
 </div>
 </body>
 </html>
