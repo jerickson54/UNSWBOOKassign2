@@ -50,9 +50,15 @@ public class ControllerServlet extends HttpServlet {
 			rd.forward(request, response);
 		}else {
 			String nextPage = cmd.execute(request, response);
+			String falseLogin = "false";
 			if (nextPage.equals("WallCommand")) {
+				request.getSession(true).setAttribute("falseLogin", falseLogin);
 				WallCommand wc = new WallCommand();
                 nextPage = wc.execute(request,response);
+			} else if (nextPage.equals("falseLogin")) {
+				nextPage = "default.jsp";
+				falseLogin = "true";
+				request.getSession(true).setAttribute("falseLogin", falseLogin);
 			}
             RequestDispatcher rd = request.getRequestDispatcher(nextPage);
             rd.forward(request, response);

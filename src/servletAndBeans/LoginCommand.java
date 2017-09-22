@@ -15,9 +15,15 @@ public class LoginCommand implements Command {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
         Friends user = FriendsDAO.loginUser(userName,password);
-        request.setAttribute("user", user);
-        request.setAttribute("id", user.getId());
-        return "WallCommand";
+        String returnString;
+        if(user == null){
+            returnString = "falseLogin";
+        } else {
+            returnString = "WallCommand";
+            request.setAttribute("user", user);
+            request.setAttribute("id", user.getId());
+        }
+        return returnString;
     }
 
 }

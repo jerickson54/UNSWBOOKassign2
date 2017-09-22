@@ -15,6 +15,10 @@
 <div class="container">
 	<h1>Welcome to UNSW Book, Login or register a new user</h1>
 	<h2>Login</h2>
+	<c:if test="${falseLogin}">
+		<div style="color: red">Please enter a valid username and password</div>
+		<br>
+	</c:if>
 	<form action = 'controller?action=login' method = 'post'>
 	<label>Username:
 		<input type = "text" name="username" required/>
