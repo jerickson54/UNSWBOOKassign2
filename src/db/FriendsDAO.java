@@ -25,7 +25,6 @@ public class FriendsDAO {
 	public static Friends retrieve(String id){
 		Session session = HibernateUtil.SESSION_FACTORY.openSession();
 		session.beginTransaction();
-		
 		Friends f = session.get(Friends.class, id);
 		session.getTransaction().commit();
 		session.close();
@@ -159,7 +158,7 @@ public class FriendsDAO {
 		
 		
 		
-		
+
 		
 	}
 	

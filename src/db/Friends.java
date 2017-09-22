@@ -20,7 +20,16 @@ public class Friends {
 	private String id;
 
 	
-	public Friends() {}
+	public Friends() {
+		this.name = "";
+		this.emailAddress = "";
+		this.dob = "";
+		this.age = -1;
+		this.id = "";
+		this.gender ="";
+		this.username = "";
+		this.password = "";
+	}
 	//Added default constructor needed for storing of query result
 	public Friends(String name,String emailAddress, String dob,int age,String gender,String username,String password, String id) {
 		super();
@@ -37,16 +46,14 @@ public class Friends {
 	
 	@Id
 	public String getId() {
+	    System.out.println(id);
 		return id;
 	}
-
 
 
 	public void setId(String id) {
 		this.id = id;
 	}
-
-
 
 	@Column(name="name")
 	public String getName() {

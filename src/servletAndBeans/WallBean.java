@@ -1,6 +1,6 @@
 package servletAndBeans;
 
-public class wallBean {
+public class WallBean {
     private String userID;
     private String name;
 

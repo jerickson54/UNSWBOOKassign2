@@ -207,7 +207,6 @@
     </style>
 </head>
 <body>
-
 <jsp:include page = "/header.jsp"/><div id="userWall">
     <div id="bannerDiv">
         <div id="banner">

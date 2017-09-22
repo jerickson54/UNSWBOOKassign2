@@ -28,7 +28,7 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("advancedSearch", new AdvancedSearchCommand());
 		commands.put("profile", new ProfileCommand());
 		commands.put("wall", new WallCommand());	
-		//commands.put("login", new LoginCommand());
+		commands.put("login", new LoginCommand());
 		//commands.put("logout", new LogoutCommand());
 		
 	}
@@ -50,8 +50,12 @@ public class ControllerServlet extends HttpServlet {
 			rd.forward(request, response);
 		}else {
 			String nextPage = cmd.execute(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
+			if (nextPage.equals("WallCommand")) {
+				WallCommand wc = new WallCommand();
+                nextPage = wc.execute(request,response);
+			}
+            RequestDispatcher rd = request.getRequestDispatcher(nextPage);
+            rd.forward(request, response);
 		}
 	}
 
