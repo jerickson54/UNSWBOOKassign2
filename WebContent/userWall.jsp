@@ -148,23 +148,61 @@
 
         .singleMessageBox {
             margin-top: 2%;
+            margin-left: 5%;
             border-radius: 25px;
             border: 2px solid #C63D0F;
             padding: 20px;
             width: 80%;
             height: 150px;
             box-shadow: 0 4px 2px -2px #C63D0F;
-            position: relative
+            position: relative;
         }
 
-        .likes{
+        .singleMessageBox:nth-child(odd) {
+
+        }
+
+        .singleMessageBox:nth-child(even) {
+            margin-left: 200px;
+        }
+
+        .likesDiv{
             position: absolute;
             bottom: 0;
-            margin-bottom: 5px;
-            width: 100%;
-            height: 10px;
+            width: 100.25%;
             background-color: #C63D0F;
+            margin-left: -2.3%;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            height: 20%;
         }
+
+        .likeText {
+            margin-left: 88%;
+            color: white;
+            margin-top: 5px;
+        }
+
+
+        .likeButton{
+            color: white;
+            text-align: left;
+            margin-top: -2.5%;
+            height: 100%;
+            width: 10%;
+            background-color: #C63D0F;
+            margin-left:0%;
+            border:none;
+        }
+
+        .likeImg {
+            margin-top: -2.5%;
+            margin-left: 1.5%;
+            float: left;
+            height: 90%;
+            width: 3%;
+        }
+
 
     </style>
 </head>
@@ -194,31 +232,19 @@
             </form>
         </div>
         <div id="userMessagesBox">
-            <p id="messagesHeading">Your Thoughts So Far</p>
+            <p id="messagesHeading">Your Thoughts So Far...</p>
             <div id="messages">
                 <div class="singleMessageBox">
-                    
+                    <div class="likesDiv">
+                        <div class="likeText">Likes</div>
+                        <img class="likeImg" src="https://cdn2.iconfinder.com/data/icons/business-set-2/512/Icon_1-256.png">
+                        <button type="button" class="likeButton">Like</button>
+                    </div>
                 </div>
-
-                <div class="singleMessageBox">
-
-                </div>
-
-                <div class="singleMessageBox">
-
-                </div>
-
-                <div class="singleMessageBox">
-
-                </div>
-
 
             </div>
         </div>
-
     </div>
-
 </div>
-
 </body>
 </html>

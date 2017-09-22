@@ -5,6 +5,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="config:hibernate.cfg.xml" value="0faa8e89-4a77-41a3-955f-9f87d09aea9c" />
+          <unit-entry name="hibernate.cfg.xml" value="e50bbeab-3aa9-44c0-b583-edf82a63b9e3" />
           <unit-entry name="target:classes:config:hibernate.cfg.xml" value="f31d5b40-2a99-41fb-81c0-37c75b996367" />
         </datasource-map>
         <naming-strategy-map />
