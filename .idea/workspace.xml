@@ -6,17 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a7efb45-cfbd-49d9-9384-2de0aadd66a8" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/servletAndBeans/wallBean.java" afterPath="$PROJECT_DIR$/src/servletAndBeans/WallBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/db/FriendsDAO.class" afterPath="$PROJECT_DIR$/target/classes/db/FriendsDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/userWall.jsp" afterPath="$PROJECT_DIR$/WebContent/userWall.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/Friends.java" afterPath="$PROJECT_DIR$/src/db/Friends.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/FriendsDAO.java" afterPath="$PROJECT_DIR$/src/db/FriendsDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servletAndBeans/ControllerServlet.java" afterPath="$PROJECT_DIR$/src/servletAndBeans/ControllerServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servletAndBeans/WallCommand.java" afterPath="$PROJECT_DIR$/src/servletAndBeans/WallCommand.java" />
-    </list>
+    <list default="true" id="6a7efb45-cfbd-49d9-9384-2de0aadd66a8" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,6 +52,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="friends" pinned="false" current-in-tab="true">
+        <entry file="das://table:/8185f1a0/e50bbeab-3aa9-44c0-b583-edf82a63b9e3/UNSWBOOK.public.friends">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LoginCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/servletAndBeans/LoginCommand.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -114,10 +113,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userWall.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="userWall.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/userWall.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
+            <state relative-caret-position="-284">
               <caret line="208" column="6" lean-forward="false" selection-start-line="208" selection-start-column="6" selection-end-line="208" selection-end-column="6" />
               <folding />
             </state>
@@ -141,16 +140,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
               <caret line="66" column="30" lean-forward="false" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/servletAndBeans/ProfileCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -465,12 +454,12 @@
       <updated>1505879197871</updated>
       <workItem from="1505879199204" duration="1436000" />
       <workItem from="1505887726878" duration="7971000" />
-      <workItem from="1506045204683" duration="6330000" />
+      <workItem from="1506045204683" duration="6665000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15737000" />
+    <option name="totallyTimeSpent" value="16072000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -689,13 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/8185f1a0/e50bbeab-3aa9-44c0-b583-edf82a63b9e3/UNSWBOOK.public.friends">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/servletAndBeans/AdvancedSearchCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -830,9 +812,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/userWall.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
+        <state relative-caret-position="-284">
           <caret line="208" column="6" lean-forward="false" selection-start-line="208" selection-start-column="6" selection-end-line="208" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/8185f1a0/e50bbeab-3aa9-44c0-b583-edf82a63b9e3/UNSWBOOK.public.friends">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
