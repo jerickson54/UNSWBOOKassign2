@@ -13,12 +13,12 @@ public class Friends {
 	private String emailAddress;
 	private String dob;
 	private String gender;
-	
 	private int age;
 	private String username;
 	private String password;
 	private String id;
 	private Boolean isAdmin;
+	private Boolean isBanned;
 
 	
 	public Friends() {
@@ -43,7 +43,6 @@ public class Friends {
 		this.username = username;
 		this.password = password;
 	}
-	
 	
 	@Id
 	public String getId() {
@@ -131,5 +130,14 @@ public class Friends {
 
 	public void setIsAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+
+	@Column(name = "isbanned")
+	public Boolean getBanned() {
+		return isBanned;
+	}
+
+	public void setBanned(Boolean banned) {
+		isBanned = banned;
 	}
 }

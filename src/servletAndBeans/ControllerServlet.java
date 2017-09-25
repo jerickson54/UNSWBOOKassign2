@@ -59,6 +59,9 @@ public class ControllerServlet extends HttpServlet {
 				nextPage = "default.jsp";
 				falseLogin = "true";
 				request.getSession(true).setAttribute("falseLogin", falseLogin);
+			} else if (nextPage.equals("userBanned")) {
+				nextPage = "default.jsp";
+				request.getSession().setAttribute("userBanned", true);
 			}
             RequestDispatcher rd = request.getRequestDispatcher(nextPage);
             rd.forward(request, response);

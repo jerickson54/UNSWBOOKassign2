@@ -20,6 +20,10 @@
 		<div style="color: red">Please enter a valid username and password</div>
 		<br>
 	</c:if>
+	<c:if test="${userBanned}">
+		<div style="color: red"> Sorry, you have been previously banned by our systems Admin</div>
+		<br>
+	</c:if>
 	<form action = 'controller?action=login' method = 'post'>
 	<label>Username:
 		<input type = "text" name="username" required/>

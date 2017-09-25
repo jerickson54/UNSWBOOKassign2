@@ -18,6 +18,8 @@ public class LoginCommand implements Command {
         String returnString;
         if(user == null){
             returnString = "falseLogin";
+        } else if (user.getBanned()){
+            returnString = "userBanned";
         } else {
             returnString = "WallCommand";
             request.setAttribute("user", user);
