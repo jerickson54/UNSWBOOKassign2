@@ -1,6 +1,13 @@
 package db;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class messagesDAO {
 	
@@ -33,6 +40,30 @@ public class messagesDAO {
 			session.getTransaction().commit();
 			session.close();
 		}
+
+	public static List<messages> search(String userID){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<messages> returnList = new ArrayList<messages>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM messages WHERE userID = :userid");
+			query.setParameter("userid", userID);
+
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				messages user = (messages) iterator.next();
+				returnList.add(user);
+			}
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return returnList;
+	}
 		
 		public static void main(String args[]){
 			/*

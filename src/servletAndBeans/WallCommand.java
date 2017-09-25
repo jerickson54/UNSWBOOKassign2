@@ -1,6 +1,7 @@
 package servletAndBeans;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,12 +31,15 @@ public class WallCommand implements Command {
             String id = request.getSession().getAttribute("id").toString();
             WallBean wall = getUser(id);
             request.setAttribute("wall", wall);
-        }
-        if(request.getParameter("message") != null) {
-            System.out.println(request.getParameter("message"));
 
-            messages m1 = new messages(request.getSession().getAttribute("id").toString(),request.getParameter("message"));
-            messagesDAO.saveOrUpdate(m1);
+            if(request.getParameter("message") != null) {
+                System.out.println(request.getParameter("message"));
+                messages m1 = new messages(request.getSession().getAttribute("id").toString(),request.getParameter("message"));
+                messagesDAO.saveOrUpdate(m1);
+            }
+
+            List<messages> messages = messagesDAO.search(id);
+            request.setAttribute("messages", messages);
         }
         return "userWall.jsp";
 	}
