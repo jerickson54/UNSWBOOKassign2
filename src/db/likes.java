@@ -18,20 +18,23 @@ public class likes {
 			private int id;
 			//used an int because messageID is auto generated as an int
 			private int messageID;
-			//used a string because that is the zid for Friends.java
+			//user id of the person who liked the message
 			private String userID;
+            //has the user seen the message?
+            private Boolean hasSeen;
 			
 			//Added default constructor
 			public likes() {
 				
 			}
-			public likes(int messageID, String userID) {
+			public likes(int messageID, String userID, Boolean hasSeen) {
 				super();
 				this.messageID = messageID;
 				this.userID = userID;
+				this.hasSeen = hasSeen;
 			}
-			
-			@Column
+
+            @Column(name="messageId")
 			public int getMessageID() {
 				return messageID;
 			}
@@ -40,7 +43,7 @@ public class likes {
 				this.messageID = messageID;
 			}
 
-			@Column
+            @Column(name="userId")
 			public String getUserID() {
 				return userID;
 			}
@@ -48,14 +51,19 @@ public class likes {
 			public void setUserID(String userID) {
 				this.userID = userID;
 			}
+
+            @Column(name="hasSeen")
+            public Boolean getHasSeen() {
+                return hasSeen;
+            }
+
+            public void setHasSeen(Boolean hasSeen) {
+                this.hasSeen = hasSeen;
+            }
 			
 			public int getId(){
 				return id;
 			}
-			
-			
-			
-			
-			
+
 
 }

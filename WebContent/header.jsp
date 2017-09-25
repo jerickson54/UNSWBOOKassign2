@@ -32,10 +32,6 @@
       <ul class="nav navbar-nav">
         <li><a href="#">My Profile</a></li>
         <li><a href="advancedSearch.jsp">Advanced Search</a></li>
-        <!-- Bell for notifications? -->
-        <li>
-        <a href="#"><span class="glyphicon glyphicon-bell" style="font-size:20px"></span></a>
-        </li>
       </ul>
       <form class="navbar-form navbar-left" action="controller?action=search" method="post">
         <div class="form-group">
@@ -43,6 +39,19 @@
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
       </form>
+      <ul>
+        <!-- Bell for notifications? -->
+        <li>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <span class="glyphicon glyphicon-bell" style="font-size:20px;margin-top:15px;margin-left: 100px"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

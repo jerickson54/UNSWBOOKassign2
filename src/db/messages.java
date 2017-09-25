@@ -16,7 +16,7 @@ public class messages {
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
 		private int id;
-		
+		// Id of the user whos board the message exists on
 		private String userID;
 		private String message;
 		

@@ -7,7 +7,6 @@ body {
 /*Navigation styling*/
 .navbar-default {
     background-color: #C63D0F;
-    border-color: none;
 }
 .navbar-default .navbar-brand {
     background-color: #C63D0F;
@@ -89,3 +88,12 @@ body {
 .form-horizontal .control-label{
 	text-align: left;
 }
+
+.dropdown-menu {
+	margin-left: 400px;
+	display:none;
+	position:absolute;
+	right:20%;
+}
+
+

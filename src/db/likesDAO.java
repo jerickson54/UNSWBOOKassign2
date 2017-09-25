@@ -35,10 +35,10 @@ public static void saveOrUpdate(likes l){
 		}
 		
 		public static void main(String args[]){
-			/*
-			likes l = new likes(1,"z1111111");
+
+			likes l = new likes(1,"z1111111",false);
 			likesDAO.saveOrUpdate(l);
-			*/
+
 		}
 
 }
