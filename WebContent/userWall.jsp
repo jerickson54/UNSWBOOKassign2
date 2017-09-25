@@ -216,8 +216,8 @@
                 ${wall.name}
             </div><div id="otherDetails">
                 <div>zID:  ${wall.userID}</div>
-                <div>DOB:  </div>
-                <div>Email:  </div>
+                <div>DOB:  ${wall.dob}</div>
+                <div>Email:  ${wall.email}</div>
 
             </div>
         </div>

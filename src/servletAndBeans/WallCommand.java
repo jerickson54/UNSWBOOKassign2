@@ -1,6 +1,7 @@
 package servletAndBeans;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,6 +21,8 @@ public class WallCommand implements Command {
         Friends user = FriendsDAO.retrieve(id);
         wallUser.setUserID(user.getId());
         wallUser.setName(user.getName());
+        wallUser.setDob(user.getDob());
+        wallUser.setEmail(user.getEmailAddress());
         return wallUser;
     }
 	
@@ -39,6 +42,7 @@ public class WallCommand implements Command {
             }
 
             List<messages> messages = messagesDAO.search(id);
+            Collections.reverse(messages);
             request.setAttribute("messages", messages);
         }
         return "userWall.jsp";
