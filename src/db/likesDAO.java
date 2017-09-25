@@ -1,6 +1,13 @@
 package db;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class likesDAO {
 	
@@ -33,6 +40,30 @@ public static void saveOrUpdate(likes l){
 			session.getTransaction().commit();
 			session.close();
 		}
+
+	public static List<likes> search(int mID){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<likes> returnList = new ArrayList<likes>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM likes WHERE messageID = :mID");
+			query.setParameter("mID", mID);
+
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				likes like = (likes) iterator.next();
+				returnList.add(like);
+			}
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return returnList;
+	}
 		
 		public static void main(String args[]){
 
