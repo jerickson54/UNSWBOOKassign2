@@ -27,9 +27,9 @@ function checkResults(){
 					<a href="controller?action=profile&id=${entry.id}"><img src="img/profile_pictures/default-user.png"></a>
 				</div>
 				<div class="contentContainer">
-					<a href="controller?action=profile&id=${entry.id}"><h4>${entry.name}</h4></a>
+					<a href="controller?action=profile&friendid=${entry.id}"><h4>${entry.name}</h4></a>
 					<p>${entry.gender}</p>
-					<a href="#" class="btn btn-info" role="button">Add as friend</a>
+					<a href="controller?action=addFriend&friendid=${entry.id}" class="btn btn-info" role="button">Add as friend</a>
 				</div>
 			</div>
 			<hr>

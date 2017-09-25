@@ -14,11 +14,11 @@ public class LoginCommand implements Command {
             throws ServletException, IOException {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
-        Friends user = FriendsDAO.loginUser(userName,password);
+         Friends user = FriendsDAO.loginUser(userName,password);
         String returnString;
         if(user == null){
             returnString = "falseLogin";
-        } else if (user.getBanned()){
+        } else if (user.getBanned() != null && user.getBanned()){
             returnString = "userBanned";
         } else {
             returnString = "WallCommand";

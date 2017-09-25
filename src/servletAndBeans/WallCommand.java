@@ -27,8 +27,13 @@ public class WallCommand implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-        if(request.getSession().getAttribute("id") != null) {
-            String id = request.getSession().getAttribute("id").toString();
+        if(request.getSession().getAttribute("id") != null || request.getSession().getAttribute("friendid") != null) {
+            String id;
+            if (request.getSession().getAttribute("friendid") != null) {
+                id = request.getSession().getAttribute("friendid").toString();
+            } else {
+                id = request.getSession().getAttribute("id").toString();
+            }
             WallBean wall = getUser(id);
             request.setAttribute("wall", wall);
 

@@ -15,10 +15,9 @@ public class ProfileCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String zId = request.getParameter("id");
-		Friends user = FriendsDAO.retrieve(zId);
-		request.setAttribute("user", user);
-		return "profile.jsp";
+		String zId = request.getParameter("friendid");
+		request.getSession().setAttribute("friendid", zId);
+		return "Profile";
 	}
 
 }

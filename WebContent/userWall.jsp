@@ -219,18 +219,19 @@
                 <div>zID:  ${wall.userID}</div>
                 <div>DOB:  ${wall.dob}</div>
                 <div>Email:  ${wall.email}</div>
-
             </div>
         </div>
     </div>
     <div id="wall">
         <div id="messageBanner">
+            <c:if test="${not viewFriendProfile}" >
             <form action = "controller?action=wall" method="post">
             <div class="speech-bubble">
                 <textarea name=message id="messageBox" placeholder="What are your thoughts today?"></textarea>
             </div>
                 <input type="submit" value="Submit" id="messageSubmit">
             </form>
+            </c:if>
         </div>
         <div id="userMessagesBox">
             <p id="messagesHeading">Your Thoughts So Far...</p>

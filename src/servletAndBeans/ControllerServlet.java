@@ -30,6 +30,7 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("wall", new WallCommand());	
 		commands.put("login", new LoginCommand());
 		commands.put("logout", new LogoutCommand());
+		//commands.put("addFriend", new AddFriendCommand());
 		
 	}
 	/** 
@@ -51,10 +52,17 @@ public class ControllerServlet extends HttpServlet {
 		}else {
 			String nextPage = cmd.execute(request, response);
 			String falseLogin = "false";
-			if (nextPage.equals("WallCommand")) {
+			if (nextPage.equals("WallCommand") || nextPage.equals("Profile")) {
+				//viewing friend's profile
+				if(nextPage.equals("Profile")){
+					request.getSession().setAttribute("viewFriendProfile", true);
+				} else {
+					request.getSession().setAttribute("viewFriendProfile", false);
+				}
 				request.getSession(true).setAttribute("falseLogin", falseLogin);
 				WallCommand wc = new WallCommand();
                 nextPage = wc.execute(request,response);
+				request.getSession().setAttribute("friendid", null);
 			} else if (nextPage.equals("falseLogin")) {
 				nextPage = "default.jsp";
 				falseLogin = "true";
