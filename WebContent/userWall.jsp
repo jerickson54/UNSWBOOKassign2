@@ -223,9 +223,9 @@
     </div>
     <div id="wall">
         <div id="messageBanner">
-            <form>
+            <form action = "controller?action=wall" method="post">
             <div class="speech-bubble">
-                <textarea id="messageBox" placeholder="What are your thoughts today?"></textarea>
+                <textarea name=message id="messageBox" placeholder="What are your thoughts today?"></textarea>
             </div>
                 <input type="submit" value="Submit" id="messageSubmit">
             </form>
