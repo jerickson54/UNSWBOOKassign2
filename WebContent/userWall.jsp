@@ -234,11 +234,11 @@
         <div id="userMessagesBox">
             <p id="messagesHeading">Your Thoughts So Far...</p>
             <div id="messages">
-                <c:forEach items="${messages}" var="entry">
+                <c:forEach items="${messages}" var="entry" varStatus="status">
                     <div class="singleMessageBox">
                         ${entry.message}
                         <div class="likesDiv">
-                            <div class="likeText">Likes</div>
+                            <div class="likeText">${likes[status.index]} Likes</div>
                             <img class="likeImg" src="https://cdn2.iconfinder.com/data/icons/business-set-2/512/Icon_1-256.png">
                             <button type="button" class="likeButton">Like</button>
                         </div>

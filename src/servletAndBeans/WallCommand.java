@@ -1,6 +1,7 @@
 package servletAndBeans;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,11 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import db.FriendsDAO;
-
-import db.Friends;
-import db.messages;
-import db.messagesDAO;
+import db.*;
 
 public class WallCommand implements Command {
 
@@ -41,9 +38,15 @@ public class WallCommand implements Command {
                 messagesDAO.saveOrUpdate(m1);
             }
 
-            List<messages> messages = messagesDAO.search(id);
-            Collections.reverse(messages);
-            request.setAttribute("messages", messages);
+            List<messages> messagesList = messagesDAO.search(id);
+            Collections.reverse(messagesList);
+            List<Integer> likes = new ArrayList<Integer>();
+            for (messages m: messagesList) {
+                likes.add(likesDAO.search(m.getId()).size());
+                System.out.printf("Message id = %d has likes = %d\n", m.getId(), likesDAO.search(m.getId()).size());
+            }
+            request.setAttribute("messages", messagesList);
+            request.setAttribute("likes", likes);
         }
         return "userWall.jsp";
 	}
