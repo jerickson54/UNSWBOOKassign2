@@ -29,7 +29,7 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("profile", new ProfileCommand());
 		commands.put("wall", new WallCommand());	
 		commands.put("login", new LoginCommand());
-		//commands.put("logout", new LogoutCommand());
+		commands.put("logout", new LogoutCommand());
 		
 	}
 	/** 
