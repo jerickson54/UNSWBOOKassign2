@@ -208,6 +208,7 @@
     </style>
 </head>
 <body>
+<c:if test="${hasLoggedIn}" >
 <jsp:include page = "/header.jsp"/><div id="userWall">
     <div id="bannerDiv">
         <div id="banner">
@@ -248,5 +249,6 @@
         </div>
     </div>
 </div>
+</c:if>
 </body>
 </html>

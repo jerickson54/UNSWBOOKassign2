@@ -22,6 +22,7 @@ public class LoginCommand implements Command {
             returnString = "WallCommand";
             request.setAttribute("user", user);
             request.getSession().setAttribute("id", user.getId());
+            request.getSession().setAttribute("hasLoggedIn", true);
         }
         return returnString;
     }

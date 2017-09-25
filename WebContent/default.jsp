@@ -12,6 +12,7 @@
 
 </head>
 <body>
+<jsp:include page = "/header.jsp"/><div id="userWall">
 <div class="container">
 	<h1>Welcome to UNSW Book, Login or register a new user</h1>
 	<h2>Login</h2>
@@ -91,6 +92,7 @@
  <input type = "submit" value = "Create Account" />
  </form>
 
+	<!--
 		<h3>Profile Picture Upload:</h3>
       	<br />
 	<form action = "uploadServlet" method = "post" enctype = "multipart/form-data">
@@ -98,6 +100,7 @@
     		<br />
     		<input type = "submit" value = "Upload File" />
 	</form>
+	-->
 </div>
 </body>
 </html>

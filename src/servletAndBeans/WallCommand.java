@@ -42,8 +42,8 @@ public class WallCommand implements Command {
             Collections.reverse(messagesList);
             List<Integer> likes = new ArrayList<Integer>();
             for (messages m: messagesList) {
-                likes.add(likesDAO.search(m.getId()).size());
-                System.out.printf("Message id = %d has likes = %d\n", m.getId(), likesDAO.search(m.getId()).size());
+                //likes.add(likesDAO.search(m.getId()).size());
+                //System.out.printf("Message id = %d has likes = %d\n", m.getId(), likesDAO.search(m.getId()).size());
             }
             request.setAttribute("messages", messagesList);
             request.setAttribute("likes", likes);

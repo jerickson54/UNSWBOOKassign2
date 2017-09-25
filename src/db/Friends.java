@@ -18,6 +18,7 @@ public class Friends {
 	private String username;
 	private String password;
 	private String id;
+	private Boolean isAdmin;
 
 	
 	public Friends() {
@@ -92,7 +93,7 @@ public class Friends {
 		this.age = age;
 	}
 
-	@Column
+	@Column(name = "emailaddress")
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -104,7 +105,7 @@ public class Friends {
 
 	
 
-	@Column
+	@Column(name = "username")
 	public String getUsername() {
 		return username;
 	}
@@ -114,7 +115,7 @@ public class Friends {
 		this.username = username;
 	}
 
-	@Column
+	@Column(name = "password")
 	public String getPassword() {
 		return password;
 	}
@@ -123,16 +124,12 @@ public class Friends {
 		this.password = password;
 	}
 
-	
+	@Column(name = "isadmin")
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 }
