@@ -26,6 +26,7 @@
          <mapping class="db.friendsList"></mapping>
          <mapping class = "db.messages"></mapping>
          <mapping class = "db.likes"></mapping>
+        <mapping class = "db.activity"></mapping>
         
     </session-factory>
 </hibernate-configuration>

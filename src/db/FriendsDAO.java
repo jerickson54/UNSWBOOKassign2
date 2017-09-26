@@ -2,6 +2,7 @@ package db;
 
 import org.hibernate.query.Query;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,12 +15,17 @@ public class FriendsDAO {
 	
 	public static void saveOrUpdate(Friends friend){
 		
-	Session session = HibernateUtil.SESSION_FACTORY.openSession();
-	session.beginTransaction();
-	
-	session.saveOrUpdate(friend);
-	session.getTransaction().commit();
-	session.close();
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		session.beginTransaction();
+
+		session.saveOrUpdate(friend);
+		session.getTransaction().commit();
+		session.close();
+
+		// activity logging
+		String description = friend.getName() + " has created an account";
+		activity a = new activity(friend.getId(), description, new Timestamp(System.currentTimeMillis()));
+		activityDAO.saveOrUpdate(a);
 	}
 	
 	public static Friends retrieve(String id){
