@@ -12,9 +12,16 @@ public class LoginCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
-         Friends user = FriendsDAO.loginUser(userName,password);
+        String isOwnProfile = request.getParameter("isOwnProfile");
+        Friends user;
+        if (isOwnProfile != null) {
+            String userId = request.getSession().getAttribute("id").toString();
+            user = FriendsDAO.retrieve(userId);
+        } else {
+            String userName = request.getParameter("username");
+            String password = request.getParameter("password");
+            user = FriendsDAO.loginUser(userName, password);
+        }
         String returnString;
         if(user == null){
             returnString = "falseLogin";
@@ -22,7 +29,7 @@ public class LoginCommand implements Command {
             returnString = "userBanned";
         } else {
             returnString = "WallCommand";
-            request.setAttribute("user", user);
+            request.getSession().setAttribute("user", user);
             request.getSession().setAttribute("id", user.getId());
             request.getSession().setAttribute("hasLoggedIn", true);
         }

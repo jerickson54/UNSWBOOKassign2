@@ -45,14 +45,12 @@ public class friendsListDAO {
 
 	public static void main(String args[]){
 
-		/*
 		friendsList l1 = new friendsList("z1111111","z1111112");
 		friendsListDAO.saveOrUpdate(l1);
 		friendsList l2 = new friendsList("z1111111","z1111113");
 		friendsListDAO.saveOrUpdate(l2);
 		friendsList l3 = new friendsList("z1111112","z1111114");
 		friendsListDAO.saveOrUpdate(l3);
-		*/
 	}
 		
 }

@@ -30,7 +30,9 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("wall", new WallCommand());	
 		commands.put("login", new LoginCommand());
 		commands.put("logout", new LogoutCommand());
-		//commands.put("addFriend", new AddFriendCommand());
+		commands.put("addFriend", new AddFriendCommand());
+		commands.put("confirmFriendRequest", new ConfirmFriendCommand());
+
 		
 	}
 	/** 

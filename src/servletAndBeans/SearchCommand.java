@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import db.Friends;
 import db.FriendsDAO;
 
-public class SearchCommand implements Command {
+public class  SearchCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)

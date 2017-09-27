@@ -24,6 +24,7 @@ public class FriendsDAO {
 
 		// activity logging
 		String description = friend.getName() + " has created an account";
+		System.out.println(description);
 		activity a = new activity(friend.getId(), description, new Timestamp(System.currentTimeMillis()));
 		activityDAO.saveOrUpdate(a);
 	}
@@ -149,8 +150,8 @@ public class FriendsDAO {
 	//success
 	
 	public static void main(String[] args){
-		
-		/*
+
+		System.out.println("gets into friend main");
 		Friends f1 = new Friends("David Chadwick","coolDude@gmail.com","10/10/1994",22,"Male","dChaddy","coolDude123","z1111111");
 		FriendsDAO.saveOrUpdate(f1);
 		Friends f2 = new Friends("Seth Myers","zubbyPenguin@gmail.com","09/1/1996",21,"Male","zubbyPenguin","coolDude124","z1111112");
@@ -159,13 +160,6 @@ public class FriendsDAO {
 		FriendsDAO.saveOrUpdate(f3);
 		Friends f4 = new Friends("Josh Edwards","patriotsForever@gmail.com","04/12/1995",22,"Male","goPats","coolDude126","z1111114");
 		FriendsDAO.saveOrUpdate(f4);
-		*/
-		
-		
-		
-		
-
-		
 	}
 	
 	

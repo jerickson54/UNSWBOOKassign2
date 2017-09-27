@@ -32,7 +32,7 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
         <c:if test="${hasLoggedIn}" >
-          <li><a href="#">My Profile</a></li>
+          <li><a href="controller?action=login&isOwnProfile=true">My Profile</a></li>
         </c:if>
         <li><a href="advancedSearch.jsp">Advanced Search</a></li>
       </ul>
