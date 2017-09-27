@@ -43,12 +43,17 @@ public class WallCommand implements Command {
                 messagesDAO.saveOrUpdate(m1);
             }
 
+            if(request.getParameter("messageLiked") != null) {
+                likes l = new likes(Integer.parseInt(request.getParameter("messageLiked")), request.getSession().getAttribute("id").toString(),false);
+                likesDAO.saveOrUpdate(l);
+            }
+
             List<messages> messagesList = messagesDAO.search(id);
             Collections.reverse(messagesList);
             List<Integer> likes = new ArrayList<Integer>();
             for (messages m: messagesList) {
-                //likes.add(likesDAO.search(m.getId()).size());
-                //System.out.printf("Message id = %d has likes = %d\n", m.getId(), likesDAO.search(m.getId()).size());
+                likes.add(likesDAO.search(m.getId()).size());
+                System.out.printf("Message id = %d has likes = %d\n", m.getId(), likesDAO.search(m.getId()).size());
             }
             request.setAttribute("messages", messagesList);
             request.setAttribute("likes", likes);
