@@ -32,6 +32,9 @@ public class LoginCommand implements Command {
             request.getSession().setAttribute("user", user);
             request.getSession().setAttribute("id", user.getId());
             request.getSession().setAttribute("hasLoggedIn", true);
+            if(user.getIsAdmin()) {
+                request.getSession().setAttribute("isAdmin", user.getIsAdmin());
+            }
         }
         return returnString;
     }

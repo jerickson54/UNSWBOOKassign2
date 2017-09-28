@@ -13,6 +13,7 @@ public class LogoutCommand implements Command{
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getSession().setAttribute("hasLoggedIn", false);
+        request.getSession().setAttribute("isAdmin", false);
         return "default.jsp";
     }
 }

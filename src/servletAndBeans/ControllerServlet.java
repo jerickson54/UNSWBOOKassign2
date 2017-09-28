@@ -32,6 +32,7 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("logout", new LogoutCommand());
 		commands.put("addFriend", new AddFriendCommand());
 		commands.put("confirmFriendRequest", new ConfirmFriendCommand());
+		commands.put("banUser", new BanCommand());
 
 		
 	}
@@ -59,12 +60,12 @@ public class ControllerServlet extends HttpServlet {
 				if(nextPage.equals("Profile")){
 					request.getSession().setAttribute("viewFriendProfile", true);
 				} else {
+					request.getSession().setAttribute("friendid", null);
 					request.getSession().setAttribute("viewFriendProfile", false);
 				}
 				request.getSession(true).setAttribute("falseLogin", falseLogin);
 				WallCommand wc = new WallCommand();
                 nextPage = wc.execute(request,response);
-				request.getSession().setAttribute("friendid", null);
 			} else if (nextPage.equals("falseLogin")) {
 				nextPage = "default.jsp";
 				falseLogin = "true";

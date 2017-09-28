@@ -23,8 +23,13 @@ public class FriendsDAO {
 		session.close();
 
 		// activity logging
-		String description = friend.getName() + " has created an account";
-		System.out.println(description);
+		String description;
+		if(friend.getBanned()) {
+			description = friend.getName() + " has been banned";
+		} else {
+			description = friend.getName() + " has created an account";
+
+		}
 		activity a = new activity(friend.getId(), description, new Timestamp(System.currentTimeMillis()));
 		activityDAO.saveOrUpdate(a);
 	}

@@ -91,6 +91,13 @@
             overflow: auto;
         }
 
+        #adminBanner{
+            background-color: #C63D0F;
+            width: 95%;
+            height: 60%;
+            margin: 1% 0 0 2.5%;
+        }
+
         .speech-bubble {
             width: 95%;
             height: 70%;
@@ -213,7 +220,11 @@
             width: 3%;
         }
 
-
+    .adminButtons{
+        color: white;
+        margin-left: 10px;
+        float: left;
+    }
     </style>
 </head>
 <body>
@@ -245,8 +256,15 @@
                 </c:when>
                 <c:otherwise>
                     <div id="viewFriendBanner">
+                        <c:if test="${isAdmin}">
+                            <div id="adminBanner">
+                                <a class="adminButtons" href="controller?action=banUser"><h4>Ban User</h4></a>
+                                <a class="adminButtons" href="controller?action="><h4>View User History</h4></a>
 
+                            </div>
+                        </c:if>
                     </div>
+
                 </c:otherwise>
             </c:choose>
         <div id="userMessagesBox">

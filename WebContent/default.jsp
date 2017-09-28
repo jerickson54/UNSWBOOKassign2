@@ -21,7 +21,7 @@
 		<br>
 	</c:if>
 	<c:if test="${userBanned}">
-		<div style="color: red"> Sorry, you have been previously banned by our systems Admin</div>
+		<div style="color: red"> Sorry, you have been previously banned by our systems admin</div>
 		<br>
 	</c:if>
 	<form action = 'controller?action=login' method = 'post'>
