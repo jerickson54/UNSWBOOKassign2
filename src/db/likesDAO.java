@@ -50,35 +50,59 @@ public class likesDAO {
 		session.close();
 	}
 
-public static List<likes> search(int mID){
-	Session session = HibernateUtil.SESSION_FACTORY.openSession();
-	List<likes> returnList = new ArrayList<likes>();
-	Transaction tx = null;
-	try {
-		tx = session.beginTransaction();
-		Query query = session.createQuery("FROM likes WHERE messageID = :mID");
-		query.setParameter("mID", mID);
+	public static List<likes> searchByMessageID(int mID){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<likes> returnList = new ArrayList<likes>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM likes WHERE messageID = :mID");
+			query.setParameter("mID", mID);
 
-		List list = query.list();
-		for (Iterator iterator = list.iterator(); iterator.hasNext();){
-			likes like = (likes) iterator.next();
-			returnList.add(like);
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				likes like = (likes) iterator.next();
+				returnList.add(like);
+			}
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
 		}
-		tx.commit();
-	}catch(HibernateException e) {
-		if (tx!=null) tx.rollback();
-		e.printStackTrace();
-	}finally {
-		session.close();
+		return returnList;
 	}
-	return returnList;
-}
+
+	public static List<likes> getLikes(){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<likes> returnList = new ArrayList<likes>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM likes ");
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				likes like = (likes) iterator.next();
+				returnList.add(like);
+			}
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return returnList;
+	}
 
 	public static void main(String args[]){
 
-		likes l = new likes(1,"z1111111",false);
-		likesDAO.saveOrUpdate(l);
-
+		//likes l = new likes(1,"z1111111",false);
+		//likesDAO.saveOrUpdate(l);
+		for(likes l : likesDAO.getLikes()) {
+			System.out.println(l.getUserID());
+		}
 	}
 
 }

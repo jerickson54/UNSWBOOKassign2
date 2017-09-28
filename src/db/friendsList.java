@@ -20,6 +20,7 @@ public class friendsList {
 		
 	private String Friendid1;
 	private String Friendid2;
+	private boolean hasSeen;
 	
 	//Added default constructor
 	public friendsList() {
@@ -30,6 +31,7 @@ public class friendsList {
 		super();
 		this.Friendid1 = Friendid1;
 		this.Friendid2 = Friendid2;
+		hasSeen = false;
 	}
 
 	
@@ -54,6 +56,13 @@ public class friendsList {
 	public int getId(){
 		return id;
 	}
-	
 
+	@Column(name = "hasSeen")
+	public boolean getHasSeen() {
+		return hasSeen;
+	}
+
+	public void setHasSeen(boolean hasSeen) {
+		this.hasSeen = hasSeen;
+	}
 }

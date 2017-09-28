@@ -1,7 +1,11 @@
 package servletAndBeans;
 
+import db.*;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -56,6 +60,9 @@ public class ControllerServlet extends HttpServlet {
 		}else {
 			String nextPage = cmd.execute(request, response);
 			String falseLogin = "false";
+			if(!nextPage.equals("default.jsp")) {
+				updateNotifications(request);
+			}
 			if (nextPage.equals("WallCommand") || nextPage.equals("Profile")) {
 				//viewing friend's profile
 				if(nextPage.equals("Profile")){
@@ -104,5 +111,38 @@ public class ControllerServlet extends HttpServlet {
 	 */
 	public String getServletInfo() {
 		return "Controller for the application";
-	}	
+	}
+
+	public void updateNotifications(HttpServletRequest request) {
+		if(request.getSession().getAttribute("hasLoggedIn") != null) {
+			if((boolean) request.getSession().getAttribute("hasLoggedIn")) { // If user is logged in update notifications
+				String loggedInUser = request.getSession().getAttribute("id").toString();
+				List<String> notifications = new ArrayList<String>();
+				List<friendsList> friendRequests = friendsListDAO.search(loggedInUser);
+				List<likes> likes = likesDAO.getLikes();
+				for(friendsList fR : friendRequests) {
+					if(!fR.getHasSeen()) {
+						notifications.add(FriendsDAO.retrieve(fR.getId1()).getName() + " has accepted your friend request");
+						if(request.getParameter("hasSeen") != null) {
+							fR.setHasSeen(true);
+							friendsListDAO.saveOrUpdate(fR);
+						}
+					}
+				}
+				for(likes like : likes) {
+					if(messagesDAO.retrieve(like.getMessageID()).getUserID().equals(loggedInUser)
+							&& !like.getHasSeen()) {
+						notifications.add(FriendsDAO.retrieve(like.getUserID()).getName() +
+								" likes your message \"" + messagesDAO.retrieve(like.getMessageID()).getMessage()
+								+ "\"");
+						if(request.getParameter("hasSeen") != null) {
+							like.setHasSeen(true);
+							likesDAO.saveOrUpdate(like);
+						}
+					}
+				}
+				request.getSession().setAttribute("notifications", notifications);
+			}
+		}
+	}
 }
