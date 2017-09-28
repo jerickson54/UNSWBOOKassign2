@@ -14,7 +14,7 @@ public class ConfirmFriendCommand implements Command{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userId = request.getSession().getAttribute("id").toString();
+        String userId = request.getParameter("id");
         String friendId = request.getParameter("friendid");
 
         // Adding the friend list to the database
@@ -25,6 +25,7 @@ public class ConfirmFriendCommand implements Command{
         Friends user = FriendsDAO.retrieve(userId);
         request.getSession().setAttribute("user", user);
         request.getSession().setAttribute("id", userId);
+        request.getSession().setAttribute("friendid",friendId);
         request.getSession().setAttribute("hasLoggedIn", true);
         return "Profile";
     }
