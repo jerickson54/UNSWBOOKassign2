@@ -82,6 +82,15 @@
 
         }
 
+        #viewFriendBanner {
+            color: white;
+            width: 100%;
+            height: 10%;
+            background-color: #303031;
+            position: relative;
+            overflow: auto;
+        }
+
         .speech-bubble {
             width: 95%;
             height: 70%;
@@ -223,18 +232,33 @@
         </div>
     </div>
     <div id="wall">
-        <div id="messageBanner">
-            <c:if test="${not viewFriendProfile}" >
-            <form action = "controller?action=wall" method="post">
-            <div class="speech-bubble">
-                <textarea name=message id="messageBox" placeholder="What are your thoughts today?"></textarea>
-            </div>
-                <input type="submit" value="Submit" id="messageSubmit">
-            </form>
-            </c:if>
-        </div>
+            <c:choose>
+                <c:when test="${not viewFriendProfile}">
+                <div id="messageBanner">
+                    <form action = "controller?action=wall" method="post">
+                    <div class="speech-bubble">
+                        <textarea name=message id="messageBox" placeholder="What are your thoughts today?"></textarea>
+                    </div>
+                    <input type="submit" value="Submit" id="messageSubmit">
+                    </form>
+                </div>
+                </c:when>
+                <c:otherwise>
+                    <div id="viewFriendBanner">
+
+                    </div>
+                </c:otherwise>
+            </c:choose>
         <div id="userMessagesBox">
-            <p id="messagesHeading">Your Thoughts So Far...</p>
+            <c:choose>
+                <c:when test="${not viewFriendProfile}">
+                    <p id="messagesHeading">Your Thoughts So Far...</p>
+                </c:when>
+                <c:otherwise>
+                    <p id="messagesHeading">Their Thoughts So Far...</p>
+                </c:otherwise>
+            </c:choose>
+
             <div id="messages">
                 <form action = "controller?action=wall" method="post">
                     <c:forEach items="${messages}" var="entry" varStatus="status">
