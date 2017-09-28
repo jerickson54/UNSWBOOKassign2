@@ -259,7 +259,7 @@
                         <c:if test="${isAdmin}">
                             <div id="adminBanner">
                                 <a class="adminButtons" href="controller?action=banUser"><h4>Ban User</h4></a>
-                                <a class="adminButtons" href="controller?action="><h4>View User History</h4></a>
+                                <a class="adminButtons" href="controller?action=activityReport"><h4>View User History</h4></a>
 
                             </div>
                         </c:if>

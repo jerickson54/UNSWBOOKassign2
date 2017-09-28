@@ -33,8 +33,8 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("addFriend", new AddFriendCommand());
 		commands.put("confirmFriendRequest", new ConfirmFriendCommand());
 		commands.put("banUser", new BanCommand());
+		commands.put("activityReport", new UserActivityCommand());
 
-		
 	}
 	/** 
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
