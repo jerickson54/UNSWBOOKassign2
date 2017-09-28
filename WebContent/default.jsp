@@ -95,16 +95,13 @@
 
  <input type = "submit" value = "Create Account" />
  </form>
-
-	<!--
 		<h3>Profile Picture Upload:</h3>
       	<br />
-	<form action = "uploadServlet" method = "post" enctype = "multipart/form-data">
+	<form action ="controller?action=upload" method = "post" enctype = "multipart/form-data">
      	<input type = "file" name = "file" size = "50" />
     		<br />
     		<input type = "submit" value = "Upload File" />
 	</form>
-	-->
-</div>
+
 </body>
 </html>

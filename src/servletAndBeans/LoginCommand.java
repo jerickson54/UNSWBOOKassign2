@@ -31,6 +31,7 @@ public class LoginCommand implements Command {
             returnString = "WallCommand";
             request.getSession().setAttribute("user", user);
             request.getSession().setAttribute("id", user.getId());
+            request.getSession().setAttribute("profilephotopath",user.getUserProfilePhoto());
             request.getSession().setAttribute("hasLoggedIn", true);
             if(user.getIsAdmin()) {
                 request.getSession().setAttribute("isAdmin", user.getIsAdmin());

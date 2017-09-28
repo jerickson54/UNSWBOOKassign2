@@ -34,6 +34,7 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("confirmFriendRequest", new ConfirmFriendCommand());
 		commands.put("banUser", new BanCommand());
 		commands.put("activityReport", new UserActivityCommand());
+		commands.put("upload", new UploadCommand());
 
 	}
 	/** 

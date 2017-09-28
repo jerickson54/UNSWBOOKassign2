@@ -10,6 +10,12 @@
 <html>
 <head>
     <title>Admin Activity Report</title>
+    <style type="text/css">
+        .table {
+            width: 80%;
+            margin-left: 5%;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page = "/header.jsp"/>
@@ -17,8 +23,8 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
+            <th>Time Stamp</th>
+            <th>Description</th>
         </tr>
         <tbody>
     <c:forEach items="${activities}" var="entry">

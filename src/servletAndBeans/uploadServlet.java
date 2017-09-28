@@ -27,6 +27,7 @@ import db.Friends;
  */
 @WebServlet("/uploadServlet")
 public class uploadServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -45,6 +46,7 @@ public class uploadServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	/*
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//TODO: Include this in the RegisterCommand
@@ -83,8 +85,9 @@ public class uploadServlet extends HttpServlet {
         }else{
         	 System.out.println("This servlet only uploads the file.");
         }
-	      request.getRequestDispatcher("/login.jsp").forward(request,response);
+	      //request.getRequestDispatcher("/login.jsp").forward(request,response);
 	     
 	}
+	*/
 	
 }

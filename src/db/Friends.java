@@ -19,6 +19,7 @@ public class Friends {
 	private String id;
 	private Boolean isAdmin;
 	private Boolean isBanned;
+	private String userProfilePhoto;
 
 	
 	public Friends() {
@@ -102,8 +103,6 @@ public class Friends {
 		this.emailAddress = emailAddress;
 	}
 
-	
-
 	@Column(name = "username")
 	public String getUsername() {
 		return username;
@@ -139,5 +138,14 @@ public class Friends {
 
 	public void setBanned(Boolean banned) {
 		isBanned = banned;
+	}
+
+	@Column(name = "profilephoto")
+	public String getUserProfilePhoto() {
+		return userProfilePhoto;
+	}
+
+	public void setUserProfilePhoto(String userProfilePhoto) {
+		this.userProfilePhoto = userProfilePhoto;
 	}
 }
