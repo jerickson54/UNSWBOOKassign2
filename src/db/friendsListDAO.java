@@ -1,16 +1,22 @@
 package db;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class friendsListDAO {
 
 	public static void saveOrUpdate(friendsList f){
-		
+
 		Session session = HibernateUtil.SESSION_FACTORY.openSession();
 		session.beginTransaction();
-		
+
 		session.saveOrUpdate(f);
 		session.getTransaction().commit();
 		session.close();
@@ -22,7 +28,7 @@ public class friendsListDAO {
 		activity a = new activity(f.getId1(), description, new Timestamp(System.currentTimeMillis()));
 		activityDAO.saveOrUpdate(a);
 	}
-		
+
 	public static friendsList retrieve(String id){
 		Session session = HibernateUtil.SESSION_FACTORY.openSession();
 		session.beginTransaction();
@@ -41,6 +47,30 @@ public class friendsListDAO {
 		session.remove(f);
 		session.getTransaction().commit();
 		session.close();
+	}
+
+	public static List<friendsList> search(String userID){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<friendsList> returnList = new ArrayList<friendsList>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM friendsList WHERE Friendid2 = :userID");
+			query.setParameter("userID", userID);
+
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				friendsList fl = (friendsList) iterator.next();
+				returnList.add(fl);
+			}
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return returnList;
 	}
 
 	public static void main(String args[]){

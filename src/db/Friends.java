@@ -46,7 +46,7 @@ public class Friends {
 	
 	@Id
 	public String getId() {
-	    System.out.println(id);
+	    //System.out.println(id);
 		return id;
 	}
 

@@ -47,12 +47,12 @@
           <!-- Bell for notifications? -->
           <li>
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <span class="glyphicon glyphicon-bell" style="font-size:20px;margin-left: 100px"></span>
+              <span class="glyphicon glyphicon-bell" style="font-size:20px;margin-left: 100px" onclick=""></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Page 1-1</a></li>
-              <li><a href="#">Page 1-2</a></li>
-              <li><a href="#">Page 1-3</a></li>
+              <c:forEach items ="${notifications}" var="entry">
+                <li><a href="#">${entry}</a></li>
+              </c:forEach>
             </ul>
           </li>
           <li style="margin-left: 300px">
