@@ -19,7 +19,9 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create all database on startup -->
-        <!--property name="hibernate.hbm2ddl.auto">create-drop</property>-->
+        <!--
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        -->
 
         <!-- Annotated entity classes -->
         <mapping class="db.Friends"></mapping>
@@ -27,6 +29,6 @@
          <mapping class = "db.messages"></mapping>
          <mapping class = "db.likes"></mapping>
         <mapping class = "db.activity"></mapping>
-
+        
     </session-factory>
 </hibernate-configuration>

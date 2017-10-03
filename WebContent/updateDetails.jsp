@@ -1,48 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<style>
-</style>
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>UNSW Book</title>
-
 </head>
+<style>
+#updateDetails{
+margin-top:100px;
+}
+</style>
 <body>
-<jsp:include page = "/header.jsp"/><div id="userWall">
-<div class="container">
-	<h1>Welcome to UNSW Book, Login or register a new user</h1>
-	<h2>Login</h2>
-	<c:if test="${falseLogin}">
-		<div style="color: red">Please enter a valid username and password</div>
-		<br>
-	</c:if>
-	<c:if test="${userBanned}">
-		<div style="color: red"> Sorry, you have been previously banned by our systems admin</div>
-		<br>
-	</c:if>
-	<form action = 'controller?action=login' method = 'post'>
-	<label>Username:
-		<input type = "text" name="username" required/>
-	</label>
-	<label>Password
-	<input type="password" name="password" required/>
-	</label>
-	<input type = "submit" value = "Login" />
-	</form>
-	<h2>Register</h2>
+<jsp:include page = "/header.jsp"/>
 
-<form action = 'controller?action=register' method = 'post'>
-
+<div id = "updateDetails">
+<h1>Update Information</h1>
+<form action = "controller?action=updateDatabase" method = 'POST'>
 <label> Name: 
-<input type = "text" name = "name" required/>
+<input type = "text" name = "name" value = "${user.name}" required/>
 </label>
 
+
+
 <label> Email Address: 
-<input type = "text" name = "emailAddress" required/>
+<input type = "text" name = "emailAddress" value = "${user.email}" required/>
 </label>
 
 <label> Gender: 
@@ -81,21 +64,16 @@
 </select>
 </label>
 
-<label> Username: 
-<input type = "text" name = "username" required/>
-</label>
 
 <label> Password: 
 <input type = "password" name = "password" required/>
 </label>
 
-<label> Z-ID: 
-<input type = "text" name = "zid" required/>
-</label>
 
- <input type = "submit" value = "Create Account" />
- </form>
-		
 
+ <input type = "submit" value = "Update Account" />
+ 
+</form>
+</div>
 </body>
 </html>

@@ -9,6 +9,7 @@ public class WallBean {
     private String name;
     private String dob;
     private String email;
+    
 
     public String getUserID() {
         return userID;
@@ -17,8 +18,9 @@ public class WallBean {
     public void setUserID(String userID) {
         this.userID = userID;
     }
+    
 
-    public String getName() {
+	public String getName() {
         return name;
     }
 

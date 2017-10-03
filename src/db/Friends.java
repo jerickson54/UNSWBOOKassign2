@@ -19,7 +19,7 @@ public class Friends {
 	private String id;
 	private Boolean isAdmin;
 	private Boolean isBanned;
-	private String userProfilePhoto;
+	private String userProfilePhoto = "file:/C:/comp9321/UNSWBOOKASSIGN2/Profile_photos/default_user.png";
 
 	
 	public Friends() {
@@ -43,6 +43,9 @@ public class Friends {
 		this.gender = gender;
 		this.username = username;
 		this.password = password;
+		isAdmin = false;
+		isBanned = false;
+		
 	}
 	
 	@Id
@@ -131,6 +134,7 @@ public class Friends {
 		this.isAdmin = isAdmin;
 	}
 
+	
 	@Column(name = "isbanned")
 	public Boolean getBanned() {
 		return isBanned;

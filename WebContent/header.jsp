@@ -33,8 +33,10 @@
       <ul class="nav navbar-nav">
         <c:if test="${hasLoggedIn}" >
           <li><a href="controller?action=login&isOwnProfile=true">My Profile</a></li>
+      		<li><a href = "controller?action=updateInfo"> Update Info</a></li>
         </c:if>
         <li><a href="advancedSearch.jsp">Advanced Search</a></li>
+        
       </ul>
       <form class="navbar-form navbar-left" action="controller?action=search" method="post">
         <div class="form-group">
@@ -43,11 +45,11 @@
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
       </form>
       <c:if test="${hasLoggedIn}" >
-        <ul class="nav navbar-nav">
+        <ul>
           <!-- Bell for notifications? -->
           <li>
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <span class="glyphicon glyphicon-bell" style="font-size:20px;margin-left: 100px" onclick=""></span>
+              <span class="glyphicon glyphicon-bell" style="font-size:20px;margin-left: 100px;color:white;margin-top:10px;" onclick=""></span>
             </a>
             <ul class="dropdown-menu">
               <c:forEach items ="${notifications}" var="entry">
@@ -55,8 +57,9 @@
               </c:forEach>
             </ul>
           </li>
-          <li style="margin-left: 300px">
-            <a href="controller?action=logout">Logout</a>
+          
+          <li style="font-size:20px;margin-top:-20px;">
+            <a href="controller?action=logout" style = "color:white;">Logout</a>
           </li>
         </ul>
 
