@@ -239,6 +239,7 @@
                 <div>zID:  ${wall.userID}</div>
                 <div>DOB:  ${wall.dob}</div>
                 <div>Email:  ${wall.email}</div>
+                <!--  
                 <div>
                 <h3>Profile Picture Upload:</h3>
       			<br />
@@ -246,7 +247,7 @@
      			<input type = "file" name = "file"/>
     			<br />
     			<input type = "submit" value = "Upload File" />
-				</form> </div>
+				</form> </div> -->
             </div>
         </div>
     </div>
