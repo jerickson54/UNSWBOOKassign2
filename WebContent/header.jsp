@@ -58,8 +58,8 @@
             </ul>
           </li>
           
-          <li style="font-size:20px;margin-top:-20px;">
-            <a href="controller?action=logout" style = "color:white;">Logout</a>
+          <li style="margin-top:-20px;">
+            <a  href="controller?action=logout" style = "margin-left:400px;color:white;">Logout</a>
           </li>
         </ul>
 

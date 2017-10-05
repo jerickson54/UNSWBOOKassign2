@@ -10,6 +10,7 @@
 <style>
 #updateDetails{
 margin-top:100px;
+    margin-left: 100px;
 }
 </style>
 <body>
