@@ -6,7 +6,9 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,6 +18,14 @@ public class messagesDAO {
 		
 		Session session = HibernateUtil.SESSION_FACTORY.openSession();
 		session.beginTransaction();
+
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+		String formattedDate = sdf.format(date);
+		String message = m.getMessage();
+		message += " ( message posted at " + formattedDate + " )";
+
+		m.setMessage(message);
 		
 		session.saveOrUpdate(m);
 		session.getTransaction().commit();

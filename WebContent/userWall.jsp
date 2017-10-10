@@ -14,7 +14,7 @@
     <title>Users Wall</title>
     <style>
         #userWall {
-            margin-top: 25px;
+            margin-top: -25px;
             height: 100%;
         }
         #bannerDiv {

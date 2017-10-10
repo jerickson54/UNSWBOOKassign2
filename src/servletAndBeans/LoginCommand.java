@@ -33,7 +33,7 @@ public class LoginCommand implements Command {
             request.getSession().setAttribute("id", user.getId());
             request.getSession().setAttribute("profilephotopath",user.getUserProfilePhoto());
             request.getSession().setAttribute("hasLoggedIn", true);
-            if(user.getIsAdmin()) {
+            if(user.getIsAdmin() != null && user.getIsAdmin()) {
                 request.getSession().setAttribute("isAdmin", user.getIsAdmin());
             }
         }
