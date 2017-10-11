@@ -41,6 +41,7 @@ public class ControllerServlet extends HttpServlet {
 		commands.put("upload", new UploadCommand());
 		commands.put("updateInfo", new updateInfoCommand());
 		commands.put("updateDatabase", new updateDatabaseCommand());
+		commands.put("extraction", new ExtractionCommand());
 
 	}
 	/** 

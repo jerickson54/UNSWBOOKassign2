@@ -148,6 +148,17 @@
             background-color: rgba(0, 0, 0, 0);
             border-color: rgba(0, 0, 0, 0)
         }
+        
+          
+        .buttonExtract{
+        color:white;
+        background-color:#C63D0F;
+        border:none;
+        text-align: center;
+        padding: 15px 32px;
+        width:22%;
+        
+        }
 
         textarea::-webkit-input-placeholder {
             color: white !important;
@@ -295,10 +306,20 @@
                                 <div class="likeText">${likes[status.index]} Likes</div>
                                 <img class="likeImg" src="https://cdn2.iconfinder.com/data/icons/business-set-2/512/Icon_1-256.png">
                                 <button name="messageLiked" type="submit" value="${entry.id}" class="likeButton">Like</button>
+                                
                             </div>
                         </div>
                     </c:forEach>
                 </form>
+                	
+                		<form action = "controller?action=extraction" method = "post">
+                				<input type = "hidden" name = "currentID" value = "${wall.userID}">
+                                <input class = "buttonExtract" name ="type" value = "Extract Keywords" type = "submit"> 
+                                <input class = "buttonExtract" name ="type" value = "Extract People" type = "submit"> 
+                                <input class = "buttonExtract"name ="type" value = "Extract Organizations" type = "submit"> 
+                                <input class = "buttonExtract" name ="type" value = "Extract Locations" type = "submit"> 
+                       </form>
+            	 	
             </div>
         </div>
     </div>

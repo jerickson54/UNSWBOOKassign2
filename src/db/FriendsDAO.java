@@ -158,6 +158,7 @@ public class FriendsDAO {
 	
 	public static void main(String[] args){
 
+		/*
 		System.out.println("gets into friend main");
 		Friends f1 = new Friends("David Chadwick","coolDude@gmail.com","10/10/1994",22,"Male","dChaddy","coolDude123","z1111111");
 		FriendsDAO.saveOrUpdate(f1);
@@ -166,7 +167,10 @@ public class FriendsDAO {
 		Friends f3 = new Friends("Lucas Elder","elderEnterprise@gmail.com","05/2/1997",20,"Male","STARLORD","coolDude125","z1111113");
 		FriendsDAO.saveOrUpdate(f3);
 		Friends f4 = new Friends("Josh Edwards","patriotsForever@gmail.com","04/12/1995",22,"Male","goPats","coolDude126","z1111114");
-		FriendsDAO.saveOrUpdate(f4);
+		FriendsDAO.saveOrUpdate(f4);*/
+		
+		//Friends admin = new Friends("admin","jerickson5454@gmail.com","01/01/1905",112,"Male","admin","password","7777777");
+		//FriendsDAO.saveOrUpdate(admin);
 	}
 	
 	

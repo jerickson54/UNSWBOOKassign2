@@ -12,6 +12,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
+
+import db.messages;
+import db.messagesDAO;
 import unsw.curation.api.extractnamedentity.ExtractEntitySentence;
 import unsw.curation.api.tokenization.ExtractionKeywordImpl;
 
@@ -112,16 +116,99 @@ public class ExtractionCommand implements Command {
 		
 		
 	}
+	
+	public extractionResultsBean setupBean(List<String> listSet){
+		extractionResultsBean b = new extractionResultsBean();
+		b.setExtractionResults(listSet);
+		return b;
+	}
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String type = request.getParameter("type");
+
+		String id = request.getParameter("currentID");
+		
+		String content = "";
+		
+		List<messages> allMessages = messagesDAO.search(id);
+		for(messages m : allMessages){
+			if(m.getMessage().length() > 42)
+			content += m.getMessage().substring(0,m.getMessage().length()-42) + " ";
+			else
+				content+=m.getMessage() + " ";
+		}
+
+		
+		
+		ExtractEntitySentence fSentence = new ExtractEntitySentence();
+		List<String> nothing = new ArrayList<String>();
+		nothing.add("Sorry no results");
+		
+		if(type.equals("Extract Keywords")){
+			ExtractionKeywordImpl ek = new ExtractionKeywordImpl();
+			URL url =ExtractionCommand.class.getResource("/");
+
+			String file = url.getPath() + "servletAndBeans/englishStopwords.txt";
+			
+		
+			
+			try {
+				String keys = ek.ExtractSentenceKeyword(content, new File(file));
+				List<String> keywords = Arrays.asList(keys.split("\\s*,\\s*"));
+				extractionResultsBean Results = setupBean(keywords);
+				request.setAttribute("results", Results);
+				
+				
+				
+			} catch (Exception e) {
+				extractionResultsBean noResults = setupBean(nothing);
+				request.setAttribute("results", noResults);
+			}
+		}
+		
+		if(type.equals("Extract People")){
+			try {
+				List<String> person = fSentence.ExtractPerson(content);
+				extractionResultsBean Results = setupBean(person);
+				request.setAttribute("results", Results);
+					
+			} catch (URISyntaxException e) {
+				extractionResultsBean noResults = setupBean(nothing);
+				request.setAttribute("results", noResults);
+			}
+		}
+
+		if(type.equals("Extract Organizations")){
+			try {
+				List<String> organizations = fSentence.ExtractOrganization(content);
+				extractionResultsBean Results = setupBean(organizations);
+				request.setAttribute("results", Results);
+			} catch (URISyntaxException e) {
+				extractionResultsBean noResults = setupBean(nothing);
+				request.setAttribute("results", noResults);
+			}
+		}
+
+		if(type.equals("Extract Locations")){
+			try {
+				List<String> locations = fSentence.ExtractLocation(content);
+				extractionResultsBean Results = setupBean(locations);
+				request.setAttribute("results", Results);
+			} catch (URISyntaxException e) {
+				extractionResultsBean noResults = setupBean(nothing);
+				request.setAttribute("results", noResults);
+			}
+		}
+		
+		return "extractionResults.jsp";
+		
 	}
 	
-	public static void main(String args[]){
-		doExtraction();
-	}
+	//public static void main(String args[]){
+	//	doExtraction();
+	//}
 
 }

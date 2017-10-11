@@ -43,7 +43,11 @@ public class Friends {
 		this.gender = gender;
 		this.username = username;
 		this.password = password;
+		if(name.equals("admin") && id.equals("7777777"))
+			isAdmin=true;
+		else
 		isAdmin = false;
+		
 		isBanned = false;
 		
 	}
