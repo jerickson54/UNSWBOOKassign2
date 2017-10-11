@@ -19,15 +19,17 @@ public class messages {
 		// Id of the user whos board the message exists on
 		private String userID;
 		private String message;
+		private boolean containBullying;
 		
 		//Added default constructor
 		public messages() {
 			
 		}
-		public messages(String userID, String message) {
+		public messages(String userID, String message, boolean containBullying) {
 			super();
 			this.userID = userID;
 			this.message = message;
+			this.containBullying = containBullying;
 		}
 		
 		@Column
@@ -46,6 +48,15 @@ public class messages {
 
 		public void setMessage(String message) {
 			this.message = message;
+		}
+		
+		
+		@Column
+		public boolean isContainBullying() {
+			return containBullying;
+		}
+		public void setContainBullying(boolean containBullying) {
+			this.containBullying = containBullying;
 		}
 		
 		public int getId(){

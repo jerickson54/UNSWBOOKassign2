@@ -123,7 +123,7 @@ public class WallCommand implements Command {
     			} catch (Exception e) {
     				System.out.println("Bully comparison failed.");
     			}
-    			messages m1 = new messages(request.getSession().getAttribute("id").toString(),request.getParameter("message"));
+    			messages m1 = new messages(request.getSession().getAttribute("id").toString(),request.getParameter("message"),isBullying);
     			 messagesDAO.saveOrUpdate(m1);
             }
 

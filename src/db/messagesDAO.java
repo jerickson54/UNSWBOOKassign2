@@ -33,7 +33,12 @@ public class messagesDAO {
 
 		// activity logging
 		String user = FriendsDAO.retrieve(m.getUserID()).getName();
-		String description = user + " posted the message: " + m.getMessage();
+		String description;
+		if(m.isContainBullying())
+		description = "Bullying content by: " + user + ". " + m.getMessage();
+		else
+		description = user + " posted the message: " + m.getMessage();
+		
 		System.out.println(description);
 		activity a = new activity(m.getUserID(), description, new Timestamp(System.currentTimeMillis()));
 		activityDAO.saveOrUpdate(a);
