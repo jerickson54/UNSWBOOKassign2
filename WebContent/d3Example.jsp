@@ -22,8 +22,8 @@ fill:#0c24d6;
 <body>
 <script>
 
-var width = 960,
-    height = 500
+var width = 2000,
+    height = 1000
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -34,6 +34,8 @@ var force = d3.layout.force()
     .distance(250)
     .charge(-250)
     .size([width, height]);
+    
+ 
 
 d3.json("graph.json", function(json) {
   force
