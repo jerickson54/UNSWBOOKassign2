@@ -15,12 +15,13 @@ public class JSONwriter {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
-		nodeD3 n1 = new nodeD3("node1",1);
+		nodeD3 n1 = new nodeD3("Lebron James",1);
 		
-		nodeD3 n2 = new nodeD3("node2",2);
-		nodeD3 n3 = new nodeD3("node3",2);
-		nodeD3 n4 = new nodeD3("node4",3);
-		nodeD3 n5 = new nodeD3("node5",3);
+		nodeD3 n2 = new nodeD3("Derrick Rose",2);
+		nodeD3 n3 = new nodeD3("Kevin Love",2);
+		nodeD3 n4 = new nodeD3("Steph Curry",3);
+		nodeD3 n5 = new nodeD3("Kevin Durant "
+				+ "WAOW the warriors are so good.",3);
 		
 		
 		nodeD3 [] allNodes = new nodeD3[5];

@@ -55,14 +55,25 @@ public class friendsListDAO {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
+			//search both columns
 			Query query = session.createQuery("FROM friendsList WHERE Friendid2 = :userID");
 			query.setParameter("userID", userID);
-
+			Query query2 = session.createQuery("FROM friendsList WHERE Friendid1 = :userID");
+			query2.setParameter("userID", userID);
+			
 			List list = query.list();
 			for (Iterator iterator = list.iterator(); iterator.hasNext();){
 				friendsList fl = (friendsList) iterator.next();
 				returnList.add(fl);
 			}
+			
+			//loop through results of the second query
+			List list2 = query2.list();
+			for (Iterator iterator = list2.iterator(); iterator.hasNext();){
+				friendsList fl2 = (friendsList) iterator.next();
+				returnList.add(fl2);
+			}
+			
 			tx.commit();
 		}catch(HibernateException e) {
 			if (tx!=null) tx.rollback();

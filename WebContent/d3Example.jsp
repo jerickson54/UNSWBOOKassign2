@@ -20,6 +20,7 @@ fill:#0c24d6;
 
 </style>
 <body>
+<jsp:include page = "/header.jsp"/>
 <script>
 
 var width = 2000,

@@ -36,6 +36,7 @@
       		<li><a href = "controller?action=updateInfo"> Update Info</a></li>
         </c:if>
         <li><a href="advancedSearch.jsp">Advanced Search</a></li>
+        <li><a href = "graphQuery.jsp"> Graph Display</a></li>
         
       </ul>
       <form class="navbar-form navbar-left" action="controller?action=search" method="post">
@@ -44,6 +45,8 @@
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
       </form>
+      
+      
       <c:if test="${hasLoggedIn}" >
         <ul>
           <!-- Bell for notifications? -->
