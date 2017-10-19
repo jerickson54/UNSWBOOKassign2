@@ -48,6 +48,30 @@ public class friendsListDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
+	
+	public static List<friendsList> getEverything(){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<friendsList> returnList = new ArrayList<friendsList>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM friendsList");
+			
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				friendsList fl = (friendsList) iterator.next();
+				returnList.add(fl);
+			}
+			
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return returnList;
+	}
 
 	public static List<friendsList> search(String userID){
 		Session session = HibernateUtil.SESSION_FACTORY.openSession();

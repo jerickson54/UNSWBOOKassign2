@@ -81,6 +81,30 @@ public class FriendsDAO {
 	}
 
 	@SuppressWarnings("rawtypes")
+	public static List<Friends> getEverything(){
+		Session session = HibernateUtil.SESSION_FACTORY.openSession();
+		List<Friends> returnList = new ArrayList<Friends>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM Friends");
+		
+			List list = query.list();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();){
+				Friends user = (Friends) iterator.next();
+				returnList.add(user);
+			}
+			tx.commit();
+		}catch(HibernateException e) {
+			if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+		}finally {
+			session.close();
+		}
+		return returnList;
+	}
+	
+	@SuppressWarnings("rawtypes")
 	public static List<Friends> search(String name){
 		Session session = HibernateUtil.SESSION_FACTORY.openSession();
 		List<Friends> returnList = new ArrayList<Friends>();
