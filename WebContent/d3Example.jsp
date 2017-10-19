@@ -4,18 +4,19 @@
 <style>
 
 .link {
-  stroke: #aaa;
+  stroke: #000000;
 }
 
 .node text {
 stroke:#ffffff;
-cursos:pointer;
+
 }
 
 .node rect{
 stroke:#001538;
-stroke-width:3px;
+stroke-width:5px;
 fill:#0c24d6;
+opacity:0.8;
 }
 
 </style>
@@ -38,7 +39,7 @@ var force = d3.layout.force()
     
  
 
-d3.json("graph.json", function(json) {
+d3.json("toDisplay.json", function(json) {
   force
       .nodes(json.nodes)
       .links(json.links)
@@ -49,7 +50,10 @@ d3.json("graph.json", function(json) {
     .enter().append("line")
       .attr("class", "link")
     .style("stroke-width", function(d) { return Math.sqrt(d.weight); });
+  
 
+ 
+  	
   var node = svg.selectAll(".node")
       .data(json.nodes)
     .enter().append("g")
@@ -57,21 +61,47 @@ d3.json("graph.json", function(json) {
       .call(force.drag);
 
   node.append("rect")
-      .attr("width",200)
-  		.attr("height",50);
+      .attr("width",135)
+  		.attr("height",80);
   		
   		
-
   node.append("text")
-      .attr("dx", 12)
-      .attr("dy", ".75em")
-      .text(function(d) { return d.name });
+  .attr("dx", 12)
+  .attr("dy", 15)
+  .text(function(d) {
+	  return d.username});
+  
+  
+  node.append("text")
+  	.attr("dx", 12)
+  	.attr("dy", 35)
+  	.text(function(d) {
+	  return d.name});
+  
+  node.append("text")
+	.attr("dx", 12)
+	.attr("dy", 55)
+	.text(function(d) {
+	  return d.gender});
+  
+  node.append("text")
+	.attr("dx", 12)
+	.attr("dy", 75)
+	.text(function(d) {
+	  return d.dob});
+  
+ 
+  	
 
   force.on("tick", function() {
     link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+        .attr("y2", function(d) { return d.target.y; })
+        .attr("xlink:href",
+         function(d) {
+            return "#path"+d.source.index+"_"+d.target.index;
+         });
 
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   });

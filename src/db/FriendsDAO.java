@@ -160,15 +160,17 @@ public class FriendsDAO {
 
 		/*
 		System.out.println("gets into friend main");
-		Friends f1 = new Friends("David Chadwick","jerickson5454@gmail.com","10/10/1994",22,"Male","dChaddy","coolDude123","z1111111");
+		Friends f1 = new Friends("Mary Bell","jerickson5454@gmail.com","10/10/1994",22,"Female","Bell","password","z1111115");
 		FriendsDAO.saveOrUpdate(f1);
-		Friends f2 = new Friends("Seth Myers","jerickson5454@gmail.com","09/1/1996",21,"Male","zubbyPenguin","coolDude124","z1111112");
+		Friends f2 = new Friends("Katie Knapp","jerickson5454@gmail.com","09/1/1996",21,"Female","runner","password","z1111116");
 		FriendsDAO.saveOrUpdate(f2);
-		Friends f3 = new Friends("Lucas Elder","jerickson5454@gmail.com","05/2/1997",20,"Male","STARLORD","coolDude125","z1111113");
+		Friends f3 = new Friends("Trent Pruett","jerickson5454@gmail.com","05/2/1997",20,"Male","CHALLENGE","password","z1111117");
 		FriendsDAO.saveOrUpdate(f3);
-		Friends f4 = new Friends("Josh Edwards","jerickson5454@gmail.com","04/12/1995",22,"Male","goPats","coolDude126","z1111114");
+		Friends f4 = new Friends("Seth Topper","jerickson5454@gmail.com","04/12/1995",22,"Male","fast","password","z1111118");
 		FriendsDAO.saveOrUpdate(f4);
+		*/
 		
+		/*
 		Friends admin = new Friends("admin","jerickson5454@gmail.com","01/01/1905",112,"Male","admin","password","7777777");
 		FriendsDAO.saveOrUpdate(admin);
 		*/

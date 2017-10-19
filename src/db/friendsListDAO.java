@@ -86,12 +86,18 @@ public class friendsListDAO {
 
 	public static void main(String args[]){
 
-		friendsList l1 = new friendsList("z1111111","z1111112");
+		/*
+		friendsList l1 = new friendsList("z1111114","z1111112");
 		friendsListDAO.saveOrUpdate(l1);
-		friendsList l2 = new friendsList("z1111111","z1111113");
+		friendsList l2 = new friendsList("z1111114","z1111113");
 		friendsListDAO.saveOrUpdate(l2);
-		friendsList l3 = new friendsList("z1111112","z1111114");
+		friendsList l3 = new friendsList("z1111114","z1111115");
 		friendsListDAO.saveOrUpdate(l3);
+		friendsList l4 = new friendsList("z1111115","z1111117");
+		friendsListDAO.saveOrUpdate(l4);
+		friendsList l5 = new friendsList("z1111118","z1111115");
+		friendsListDAO.saveOrUpdate(l5);
+		*/
 	}
 		
 }

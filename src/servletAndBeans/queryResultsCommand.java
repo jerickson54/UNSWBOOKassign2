@@ -67,6 +67,10 @@ public class queryResultsCommand implements Command {
 			toDisplay += FriendsDAO.retrieve(type).getUsername();
 			toJSON.add(toDisplay);
 		}
+		
+		for(String ssss: toJSON){
+			System.out.println(ssss);
+		}
 			
 			
 		
