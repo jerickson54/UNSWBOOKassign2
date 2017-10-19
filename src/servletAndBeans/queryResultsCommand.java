@@ -42,10 +42,10 @@ public class queryResultsCommand implements Command {
 		List<Friends> userList = FriendsDAO.getEverything();
 		for (Friends user : userList) {
 			JSONObject jsUser = new JSONObject();
-			jsUser.put("id", user.getId());
 			jsUser.put("name", user.getName());
 			jsUser.put("gender", user.getGender());
 			jsUser.put("group", 1);
+			jsUser.put("id", user.getId());
 			nodes.put(jsUser);
 		}
 		
@@ -70,7 +70,8 @@ public class queryResultsCommand implements Command {
 		json.put("links", links);
 		String jsonString = json.toString();
 		request.setAttribute("json", jsonString);
-		System.out.println(jsonString);
+		
+		
 		return "d3Example.jsp";
 		
 		/*
@@ -133,7 +134,7 @@ public class queryResultsCommand implements Command {
 		return "d3Example.jsp";
 =======
 		*/
->>>>>>> cfbdcd78ee1b1c296b7e85de8c5c1f855d9cc123
+
 	}
 
 }
