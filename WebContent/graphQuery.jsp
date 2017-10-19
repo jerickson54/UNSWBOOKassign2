@@ -9,33 +9,34 @@
 <body>
 
 <jsp:include page = "/header.jsp"/>
-
-<form class="form-horizontal" action="controller?action=queryResults" method="POST">
-
-<div class="form-group">
-		  <label for="name" class="control-label col-sm-2">Name</label>
-		  <div class="col-sm-10">
-		  	<input type="text" class=".form-control" id="name" name="name" placeholder="Search People">
-		  </div>
-		</div>
-		
-		<label for="Messages" class="control-label col-sm-2">"Messages"</label>
-		  <div class="col-sm-10">
-		  	<input type="text" class=".form-control" id="Messages" name="Messages" placeholder="Search Messages">
-		  </div>
-		
-		
-		<label for="Friend of Friends" class="control-label col-sm-2">Friend of Friends</label>
-		  <div class="col-sm-10">
-		  	<input type="text" class=".form-control" id="friends" name="friends" placeholder="Friends">
-		  
-		</div>
-		
-
-<button type="submit" class="btn btn-default">Submit Query</button>
-</form>
-
-
+<div class="container">
+	<h2>Data Graphs and Visualization</h2>
+	<form class="form-horizontal" action="controller?action=queryResults" method="POST">
+	
+			<div class="form-group">
+			  <label for="name" class="control-label col-sm-2">Name</label>
+			  <div class="col-sm-10">
+			  	<input type="text" class=".form-control" id="name" name="name" placeholder="Search People">
+			  </div>
+			</div>
+			
+			<div class="form-group">
+			<label for="Messages" class="control-label col-sm-2">Messages</label>
+			  <div class="col-sm-10">
+			  	<input type="text" class=".form-control" id="Messages" name="Messages" placeholder="Search Messages">
+			  </div>
+			</div>
+			
+			<div class="form-group">
+			<label for="Friend of Friends" class="control-label col-sm-2">Friend of Friends</label>
+			  <div class="col-sm-10">
+			  	<input type="text" class=".form-control" id="friends" name="friends" placeholder="Friends">
+			</div>
+			</div>
+	
+		<button type="submit" class="btn btn-default">Submit Query</button>
+	</form>
+</div>
 
 </body>
 </html>
