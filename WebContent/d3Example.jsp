@@ -65,7 +65,15 @@ var node = svg.append("g")
   
     node.append("circle")
     .attr("r", 75)
-    .attr("fill", "blue");
+    .attr("fill", function(d)
+    		{ if(d.gender == "Female")
+    			return "red"
+    			else if(d.gender == "Male")
+    				return "blue"
+    				else
+    					return "green"
+    					});
+    		
 
   
   	simulation
