@@ -11,8 +11,8 @@
 <jsp:include page = "/header.jsp"/>
 <div class="container">
 	<h2>Data Graphs and Visualization</h2>
+	<p>Empty search will visualize all the data.</p>
 	<form class="form-horizontal" action="controller?action=queryResults" method="POST">
-	
 			<div class="form-group">
 			  <label for="name" class="control-label col-sm-2">Name</label>
 			  <div class="col-sm-10">
@@ -37,6 +37,5 @@
 		<button type="submit" class="btn btn-default">Submit Query</button>
 	</form>
 </div>
-
 </body>
 </html>

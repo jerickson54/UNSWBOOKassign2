@@ -2,6 +2,7 @@ package servletAndBeans;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,10 @@ import db.Friends;
 import db.FriendsDAO;
 import db.friendsList;
 import db.friendsListDAO;
+import db.likesDAO;
+import db.likes;
+import db.messages;
+import db.messagesDAO;
 
 public class queryResultsCommand implements Command {
 
@@ -26,6 +31,9 @@ public class queryResultsCommand implements Command {
 		String messages = request.getParameter("Messages");
 		String friends = request.getParameter("friends");
 		
+		if (name == null || messages == null || friends == null) {
+			return "";
+		}
 		//Initiate JSON variables
 		JSONObject json = new JSONObject();
 		JSONArray nodes = new JSONArray();
@@ -37,33 +45,112 @@ public class queryResultsCommand implements Command {
 		2 = messages
 		*/
 		
-		
+		HashSet<String> queriedUsers = new HashSet<String>();
+		HashSet<Integer> queriedMessages = new HashSet<Integer>();
 		//Get the nodes
+		if (!name.equals("")) {
+			List<Friends> users = FriendsDAO.search(name);
+			for (Friends f: users) {
+				queriedUsers.add(f.getId());
+			}
+		}
+		if (!friends.equals("")) {
+			List<Friends> users = FriendsDAO.search(friends);
+			for (Friends f: users) {
+				queriedUsers.add(f.getId());
+				List<friendsList> f2List = friendsListDAO.search(f.getId());
+				for (friendsList f2 : f2List) {
+					String f2id;
+					if (f2.getId1().equals(f.getId())) {
+						f2id = f2.getId2();
+						queriedUsers.add(f2.getId2());
+					}
+					else {
+						queriedUsers.add(f2.getId1());
+						f2id = f2.getId1();
+					}
+					List<friendsList> f3List = friendsListDAO.search(f2id);
+					for (friendsList f3 : f3List) {
+						if (f3.getId1().equals(f2id)) {
+							queriedUsers.add(f3.getId2());
+						}
+						else {
+							queriedUsers.add(f3.getId1());
+						}
+					}
+				}
+			}
+		}
+		if (!messages.equals("")) {
+			List<messages> msgList = messagesDAO.contentSearch(messages);
+			//TODO: Implement contentSearch
+			for (messages m: msgList) {
+				m.getId();
+			}
+			
+		}
 		List<Friends> userList = FriendsDAO.getEverything();
+		List<messages> msgList = messagesDAO.getEverything();
+		List<friendsList> friendConnections = friendsListDAO.getEverything();
+		List<likes> likeList = likesDAO.getLikes();
+		//Display everythings
+		//Get the nodes
+		//Add users to nodes in JSON
 		for (Friends user : userList) {
 			JSONObject jsUser = new JSONObject();
-			jsUser.put("id", user.getId());
+			if (queriedUsers.contains(user.getId())){
+				jsUser.put("queried", true);
+			}
+			else {
+				jsUser.put("queried", false);
+			}
 			jsUser.put("name", user.getName());
 			jsUser.put("gender", user.getGender());
 			jsUser.put("group", 1);
+			jsUser.put("id", user.getId());
 			nodes.put(jsUser);
 		}
 		
-		//TODO: Also add messages as nodes.
-		
-		
-		//Get the links
-		List<friendsList> friendConnections = friendsListDAO.getEverything();
-		for (friendsList connection: friendConnections) {
+		//Add messages to nodes in JSON
+		for (messages msg: msgList) {
+			JSONObject jsMsg = new JSONObject();
+			if (queriedMessages.contains(msg.getId())) {
+				jsMsg.put("queried", true);
+			}
+			else {
+				jsMsg.put("queried", false);
+			}
+			jsMsg.put("message", msg.getMessage());
+			jsMsg.put("group", 2);
+			jsMsg.put("id", msg.getId());
+			nodes.put(jsMsg);
+			//Add author of message as link in JSON
 			JSONObject link = new JSONObject();
-			link.put("target", connection.getId1());
-			link.put("source", connection.getId2());
-			link.put("edge", "friends");
+			link.put("edge", "posted");
+			link.put("target", msg.getId());
+			link.put("source", msg.getUserID());
 			links.put(link);
 		}
 		
-		//TODO: Also receive links between message and who posted it
-		//TODO: ALso receive links between users who liked it
+		//Get the links
+		//Get links between friends
+		for (friendsList connection: friendConnections) {
+			JSONObject link = new JSONObject();
+			link.put("edge", "friends");
+			link.put("target", connection.getId1());
+			link.put("source", connection.getId2());
+			links.put(link);
+		}
+		
+		//Get links for likes (between messages and posts)
+		
+		for (likes l: likeList) {
+			JSONObject link = new JSONObject();
+			link.put("edge", "liked");
+			link.put("target", l.getMessageID());
+			link.put("source", l.getUserID());
+			links.put(link);
+		}
 		
 		//Assemble JSON file and make it a String
 		json.put("nodes", nodes);
