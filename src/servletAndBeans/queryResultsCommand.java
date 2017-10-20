@@ -157,7 +157,8 @@ public class queryResultsCommand implements Command {
 		json.put("links", links);
 		String jsonString = json.toString();
 		request.setAttribute("json", jsonString);
-		System.out.println(jsonString);
+		
+		
 		return "d3Example.jsp";
 		
 		/*
@@ -205,7 +206,22 @@ public class queryResultsCommand implements Command {
 			toDisplay += FriendsDAO.retrieve(type).getUsername();
 			toJSON.add(toDisplay);
 		}
+<<<<<<< HEAD
+		
+		for(String ssss: toJSON){
+			System.out.println(ssss);
+		}
+			
+			
+		
+		
+		
+		
+		
+		return "d3Example.jsp";
+=======
 		*/
+
 	}
 
 }

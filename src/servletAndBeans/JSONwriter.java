@@ -15,21 +15,23 @@ public class JSONwriter {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
-		nodeD3 n1 = new nodeD3("Lebron James",1);
+		nodeD3 n1 = new nodeD3("Lebron James",1, "5/5/5", "Male", "theKING");
 		
-		nodeD3 n2 = new nodeD3("Derrick Rose",2);
-		nodeD3 n3 = new nodeD3("Kevin Love",2);
-		nodeD3 n4 = new nodeD3("Steph Curry",3);
-		nodeD3 n5 = new nodeD3("Kevin Durant "
-				+ "WAOW the warriors are so good.",3);
+		nodeD3 n2 = new nodeD3("Derrick Rose",2, "1/1/1", "Male", "baller");
+		nodeD3 n3 = new nodeD3("Kevin Love",2, "2/2/2", "Male", "LOVE");
+		nodeD3 n4 = new nodeD3("Steph Curry",3, "4/4/4", "Male", "theChef");
+		nodeD3 n5 = new nodeD3("Kevin Durant",3,"4/4/4", "Male", "Thunder Betrayal");
+		nodeD3 n6 = new nodeD3("James Harden",4, "1/12/12" , "Male" , "bestBeard2017");
 		
 		
-		nodeD3 [] allNodes = new nodeD3[5];
+		
+		nodeD3 [] allNodes = new nodeD3[6];
 		allNodes[0] = n1;
 		allNodes[1] = n2;
 		allNodes[2] = n3;
 		allNodes[3] = n4;
 		allNodes[4] = n5;
+		allNodes[5] = n6;
 		
 		//links are of this form: source, target,weight
 		//FOLLOWS ORDER OF THE NODES
@@ -53,7 +55,8 @@ public class JSONwriter {
 			
 		
 			File dumbPATHS = new File("");
-			String location = dumbPATHS.getCanonicalPath() + "/WebContent//graph.json";
+			String location = dumbPATHS.getCanonicalPath() + "/WebContent//toDisplay.json";
+			System.out.println(location);
 			File toCreate = new File(location);
 			mapper.writeValue(toCreate, toJSON);
 			
