@@ -88,6 +88,54 @@ public static List<messages> search(String userID){
 	return returnList;
 }
 
+public static List<messages> contentSearch(String msg){
+	Session session = HibernateUtil.SESSION_FACTORY.openSession();
+	List<messages> returnList = new ArrayList<messages>();
+	Transaction tx = null;
+	try {
+		tx = session.beginTransaction();
+		Query query = session.createQuery("FROM messages WHERE :msg in message");
+		query.setParameter("msg", msg);
+
+		List list = query.list();
+		for (Iterator iterator = list.iterator(); iterator.hasNext();){
+			messages user = (messages) iterator.next();
+			returnList.add(user);
+		}
+		tx.commit();
+	}catch(HibernateException e) {
+		if (tx!=null) tx.rollback();
+		e.printStackTrace();
+	}finally {
+		session.close();
+	}
+	return returnList;
+}
+
+public static List<messages> getEverything(){
+	Session session = HibernateUtil.SESSION_FACTORY.openSession();
+	List<messages> returnList = new ArrayList<messages>();
+	Transaction tx = null;
+	try {
+		tx = session.beginTransaction();
+		Query query = session.createQuery("FROM messages");
+
+		List list = query.list();
+		for (Iterator iterator = list.iterator(); iterator.hasNext();){
+			messages user = (messages) iterator.next();
+			returnList.add(user);
+		}
+		tx.commit();
+	}catch(HibernateException e) {
+		if (tx!=null) tx.rollback();
+		e.printStackTrace();
+	}finally {
+		session.close();
+	}
+	return returnList;
+}
+
+
 	public static void main(String args[]){
 		/*
 		messages m1 = new messages("z1111111","Secret tunnel. Secret tunnel. Through the mountains. Secret Secret secret tunnel. YEAHHHHH");
