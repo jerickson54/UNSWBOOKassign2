@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<style>
 
+<style>
 .links line {
   stroke: #000000;
   stroke-opacity: 0.99;
 }
-
 .node text {
 stroke:#ffffff;
 cursos:pointer;
 }
-
 .nodes circle {
   stroke: #fff;
   stroke-width: 1.5px;
@@ -20,17 +18,26 @@ cursos:pointer;
 	
 </style>
 <body>
+
+<div>
+<p style = "display:inline;">Person: <div style = "background-color:#00ccff;width:250px;height:15px;"></div> </p> 
+<p>Message: <div style = "background-color:#006666;width:250px;height:15px;"></div> </p> 
+
+<p> Border color for contained in query: </p> <div style = "background-color:#ffff00;width:250px;height:15px;"></div>
+<p> Border color for not contained in query: </p> <div style = "background-color:black;width:250px;height:15px;"></div>
+
+</div>
 <jsp:include page = "/header.jsp"/>
 <script>
+
+
 var width = 2000,
     height = 1000
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
     
-
     
-
 var toString = JSON.stringify(${json});
  console.log(toString);
 var data = JSON.parse(toString);
@@ -39,7 +46,7 @@ var data = JSON.parse(toString);
 		.force("link", d3.forceLink().id(function(d) { return d.id; }).distance(300))
 		.force("charge", d3.forceManyBody().strength(-50))
 		.force("center", d3.forceCenter(1000, 500));
-
+	
 	var link = svg.append("g")
     .attr("class", "links")
   .selectAll("line")
@@ -48,8 +55,10 @@ var data = JSON.parse(toString);
   .attr("fill", "black")
     .attr("stroke-width", function(d) { return Math.sqrt(d.value); })
     .attr("id",function(d,i) {return 'link	'+i});
+	
 
 
+	
 var node = svg.append("g")
     .attr("class", "nodes")
   .selectAll("circle")
@@ -62,7 +71,23 @@ var node = svg.append("g")
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended));
+        
+var path = svg.append("g").selectAll("link")
+.data(data.links)
+.enter().append("path")
+.attr("id",function(d,i) { return "linkid_" + i; });
 
+
+var labelText = svg.selectAll(".labelText")
+.data(data.links)
+.enter().append("text")
+.attr("class","labelText")
+.attr("dx",20)
+.attr("dy",0)
+.style("fill","red")
+.append("textPath")
+.attr("xlink:href",function(d,i) { return "#linkid_" + i;})
+.text(function(d) { return d.edge;});
   
   
     node.append("circle")
@@ -86,12 +111,10 @@ var node = svg.append("g")
     					});
     
     		
-
   
   	simulation
   		.nodes(data.nodes)
   		.on("tick", ticked);
-
 	simulation.force("link")
   		.links(data.links);
 	
@@ -167,8 +190,6 @@ var node = svg.append("g")
     	if(d.name == null)
       return d.message.substring(45,60) + "...";
      });
-
-
     
     
 function ticked() {
@@ -177,31 +198,25 @@ link
     .attr("y1", function(d) { return d.source.y; })
     .attr("x2", function(d) { return d.target.x; })
     .attr("y2", function(d) { return d.target.y; });
-
 node
 	.attr("transform",function(d){return "translate(" + d.x + "," + d.y + ")"});
+	
 
     
-
-
 }
-
   function dragstarted(d) {
     if (!d3.event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
   }
-
   function dragged(d) {
     d.fx = d3.event.x;
     d.fy = d3.event.y;
   }
-
   function dragended(d) {
     if (!d3.event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
   }
-
 </script>
 </body>
