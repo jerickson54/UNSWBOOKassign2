@@ -37,23 +37,23 @@
         </c:if>
         <li><a href="advancedSearch.jsp">Advanced Search</a></li>
         <li><a href = "graphQuery.jsp"> Graph Display</a></li>
-        
       </ul>
-      
-      <form class="navbar-form navbar-left" action="controller?action=search" method="post">
+      <ul class="nav navbar-nav navbar-center">
+      <form class="navbar-form" action="controller?action=search" method="post">
         <div class="form-group">
           <input type="text" class="form-control" id="searchBar" name="searchInput" placeholder="Search friends">
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
       </form>
+      </ul>
       
       
       <c:if test="${hasLoggedIn}" >
-        <ul>
+        <ul class="nav navbar-nav">
           <!-- Bell for notifications? -->
-          <li>
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <span class="glyphicon glyphicon-bell" style="font-size:20px;margin-left: 100px;color:white;margin-top:10px;" onclick=""></span>
+          <li class="dropdown fill-width">
+            <a data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false" role="button"s>
+              <span class="glyphicon glyphicon-bell" style="font-size:20px;" onclick=""></span>
             </a>	
             
             <ul class="dropdown-menu">
@@ -63,11 +63,10 @@
             </ul>
           </li>
           
-          <li style="margin-top:-20px;">
-            <a  href="controller?action=logout" style = "margin-left:1000px;color:white;">Logout</a>
+          <li>
+            <a  href="controller?action=logout">Logout</a>
           </li>
         </ul>
-
       </c:if>
     </div>
   </div>

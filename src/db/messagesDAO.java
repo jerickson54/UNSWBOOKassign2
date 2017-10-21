@@ -94,8 +94,8 @@ public static List<messages> contentSearch(String msg){
 	Transaction tx = null;
 	try {
 		tx = session.beginTransaction();
-		Query query = session.createQuery("FROM messages WHERE :msg in message");
-		query.setParameter("msg", msg);
+		Query query = session.createQuery("FROM messages WHERE message like :msg");
+		query.setParameter("msg", "%" + msg + "%");
 
 		List list = query.list();
 		for (Iterator iterator = list.iterator(); iterator.hasNext();){

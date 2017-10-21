@@ -88,12 +88,22 @@ body {
 .form-horizontal .control-label{
 	text-align: left;
 }
-
+/*
 .dropdown-menu {
 	margin-left: 400px;
 	display:none;
 	position:absolute;
 	right:20%;
+}
+*/
+.fill-width.dropdown {
+    position: static;
+}
+.fill-width.dropdown > .dropdown-menu {
+    left: auto;
+}
+.fill-width.dropdown > .dropdown-menu > li > a {
+   white-space: normal; 
 }
 
 
