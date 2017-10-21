@@ -85,7 +85,7 @@ public class queryResultsCommand implements Command {
 			List<messages> msgList = messagesDAO.contentSearch(messages);
 			//TODO: Implement contentSearch
 			for (messages m: msgList) {
-				m.getId();
+				queriedMessages.add(m.getId());
 			}
 			
 		}
