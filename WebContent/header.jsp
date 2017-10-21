@@ -53,7 +53,7 @@
           <!-- Bell for notifications? -->
           <li class="dropdown fill-width">
             <a data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false" role="button"s>
-              <span class="glyphicon glyphicon-bell" style="font-size:20px;" onclick=""></span>
+              <span class="glyphicon glyphicon-bell"style="font-size:20px;" onclick=""></span>
             </a>	
             
             <ul class="dropdown-menu">
