@@ -47,6 +47,13 @@ var data = JSON.parse(toString);
   .enter().append("line")
   .attr("fill", "black")
     .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
+	
+	link.append("text")
+    .attr("class","system")
+    .attr("fill","black")
+    .text(function(d) {
+      return d.edge;
+     });
 
 var node = svg.append("g")
     .attr("class", "nodes")
@@ -65,14 +72,24 @@ var node = svg.append("g")
   
     node.append("circle")
     .attr("r", 75)
-    .attr("fill", function(d)
-    		{ if(d.gender == "Female")
-    			return "red"
-    			else if(d.gender == "Male")
-    				return "blue"
-    				else
-    					return "green"
+    .style("stroke-width", 3)
+    .style("stroke", function(d){
+    	//is in query
+    	if(d.queried)
+    		return "ffff00"
+    	//is not in query
+    	else
+    		return "black"
+    })
+    .attr("fill", function(d){ 
+    		//is a person
+    		if(d.name != null)
+    			return "#00ccff";
+    		//is a message
+    		else
+    			return "#006666";
     					});
+    
     		
 
   
@@ -82,6 +99,7 @@ var node = svg.append("g")
 
 	simulation.force("link")
   		.links(data.links);
+	
 	
 	node.append("text")
     .attr("class","system")
@@ -100,15 +118,92 @@ var node = svg.append("g")
       return d.gender;
      });
 	
+	//only append id if a person
 	node.append("text")
     .attr("class","system")
     .attr("fill","white")
     .attr("dx", -20)
     .attr("dy",40)
     .text(function(d) {
+    	if(d.name != null)
       return d.id;
      });
+	
+	//Add message if is message type
+	node.append("text")
+    .attr("class","system")
+    .attr("fill","white")
+    .attr("dx", -50)
+    .attr("dy", -20)
+    .text(function(d) {
+    	if(d.name == null)
+      return d.message.substring(0,15);
+     });
+	
+	//Add message if is message type
+	node.append("text")
+    .attr("class","system")
+    .attr("fill","white")
+    .attr("dx", -50)
+    .attr("dy", -5)
+    .text(function(d) {
+    	if(d.name == null)
+      return d.message.substring(15,30);
+     });
+	
+	//Add message if is message type
+	node.append("text")
+    .attr("class","system")
+    .attr("fill","white")
+    .attr("dx", -50)
+    .attr("dy", 10)
+    .text(function(d) {
+    	if(d.name == null)
+      return d.message.substring(30,45);
+     });
+	
+	//Add message if is message type
+	node.append("text")
+    .attr("class","system")
+    .attr("fill","white")
+    .attr("dx", -50)
+    .attr("dy", 25)
+    .text(function(d) {
+    	if(d.name == null)
+      return d.message.substring(45,60) + "...";
+     });
 
+	var edgepaths = svg.selectAll(".edgepath")
+    .data(data.links)
+    .enter()
+    .append('path')
+    .attr({'d': function(d) {return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y},
+           'class':'edgepath',
+           'fill-opacity':0,
+           'stroke-opacity':0,
+           'fill':'blue',
+           'stroke':'red',
+           'id':function(d,i) {return 'edgepath'+i}})
+    .style("pointer-events", "none");
+
+var edgelabels = svg.selectAll(".edgelabel")
+    .data(data.links)
+    .enter()
+    .append('text')
+    .style("pointer-events", "none")
+    .attr({'class':'edgelabel',
+           'id':function(d,i){return 'edgelabel'+i},
+           'dx':80,
+           'dy':0,
+           'font-size':10,
+           'fill':'#aaa'});
+
+edgelabels.append('textPath')
+    .attr('xlink:href',function(d,i) {return '#edgepath'+i})
+    .style("pointer-events", "none")
+    .text(function(d,i){return 'label '+i});
+    
+    
 function ticked() {
 link
     .attr("x1", function(d) { return d.source.x; })
@@ -118,6 +213,23 @@ link
 
 node
 	.attr("transform",function(d){return "translate(" + d.x + "," + d.y + ")"});
+
+edgepaths
+	.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
+	//console.log(d)
+	return path});       
+
+edgelabels.attr('transform',function(d,i){
+    if (d.target.x<d.source.x){
+        bbox = this.getBBox();
+        rx = bbox.x+bbox.width/2;
+        ry = bbox.y+bbox.height/2;
+        return 'rotate(180 '+rx+' '+ry+')';
+        }
+    else 
+        return 'rotate(0)';
+        
+})
     
 
 

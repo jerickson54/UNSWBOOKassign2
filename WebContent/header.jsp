@@ -39,6 +39,7 @@
         <li><a href = "graphQuery.jsp"> Graph Display</a></li>
         
       </ul>
+      
       <form class="navbar-form navbar-left" action="controller?action=search" method="post">
         <div class="form-group">
           <input type="text" class="form-control" id="searchBar" name="searchInput" placeholder="Search friends">
@@ -53,7 +54,8 @@
           <li>
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               <span class="glyphicon glyphicon-bell" style="font-size:20px;margin-left: 100px;color:white;margin-top:10px;" onclick=""></span>
-            </a>
+            </a>	
+            
             <ul class="dropdown-menu">
               <c:forEach items ="${notifications}" var="entry">
                 <li><a href="#">${entry}</a></li>
@@ -62,7 +64,7 @@
           </li>
           
           <li style="margin-top:-20px;">
-            <a  href="controller?action=logout" style = "margin-left:400px;color:white;">Logout</a>
+            <a  href="controller?action=logout" style = "margin-left:1000px;color:white;">Logout</a>
           </li>
         </ul>
 
