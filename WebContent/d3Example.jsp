@@ -19,20 +19,47 @@ cursos:pointer;
 </style>
 <body>
 
-<div>
-<p style = "display:inline;">Person: <div style = "background-color:#00ccff;width:250px;height:15px;"></div> </p> 
-<p>Message: <div style = "background-color:#006666;width:250px;height:15px;"></div> </p> 
+<table>
+	<tr>
+		<td>
+		<label>Node Key</label>
+		</td>
+		<td>
+		<p> Person: <div style = "background-color:#00ccff;width:150px;height:15px;"></div></p> 
+		</td>
+		<td>
+		<p> Message: <div style = "background-color:#006666;width:150px;height:15px;"></div> </p> 
+		</td>
 
-<p> Border color for contained in query: </p> <div style = "background-color:#ffff00;width:250px;height:15px;"></div>
-<p> Border color for not contained in query: </p> <div style = "background-color:black;width:250px;height:15px;"></div>
+		<td><p> Border color In Query: <div style = "background-color:#0dfc00;width:150px;height:15px;"></div></p> 
+		</td>
+		<td><p> Border color Not In Query: <div style = "background-color:black;width:150px;height:15px;"></div></p> 
+		</td>
+</tr>
 
-</div>
+<tr>
+<td>
+<label> Link Key</label>
+</td>
+<td>
+<p>Posted: <div style = "background-color:#898b89;width:150px;height:15px;"></div> </p>
+</td>
+<td>
+<p>Friends: <div style = "background-color:#5B0265;width:150px;height:15px;"></div> </p>
+</td>
+<td>
+<p>Liked: <div style = "background-color:#f900fc;width:150px;height:15px;"></div> </p>
+</td>
+</tr>
+</table>
+
+
 <jsp:include page = "/header.jsp"/>
 <script>
 
 
 var width = 2000,
-    height = 1000
+    height = 2000
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -52,9 +79,18 @@ var data = JSON.parse(toString);
   .selectAll("line")
   .data(data.links)
   .enter().append("line")
-  .attr("fill", "black")
-    .attr("stroke-width", function(d) { return Math.sqrt(d.value); })
+  .style("stroke", function(d) {
+	  if(d.edge == "posted")
+		  return "#898b89"
+		if(d.edge == "friends")
+			  return "#5B0265"
+		if(d.edge == "liked")
+				return "#f900fc"
+		  
+  })
+    .attr("stroke-width", 5)
     .attr("id",function(d,i) {return 'link	'+i});
+    //.enter().append("path");
 	
 
 
@@ -72,21 +108,12 @@ var node = svg.append("g")
         .on("drag", dragged)
         .on("end", dragended));
         
-var path = svg.append("g").selectAll("link")
-.data(data.links)
-.enter().append("path")
-.attr("id",function(d,i) { return "linkid_" + i; });
 
 
-var labelText = svg.selectAll(".labelText")
+
+var labelText = svg.append("g")
 .data(data.links)
-.enter().append("text")
-.attr("class","labelText")
-.attr("dx",20)
-.attr("dy",0)
-.style("fill","red")
 .append("textPath")
-.attr("xlink:href",function(d,i) { return "#linkid_" + i;})
 .text(function(d) { return d.edge;});
   
   
@@ -96,7 +123,7 @@ var labelText = svg.selectAll(".labelText")
     .style("stroke", function(d){
     	//is in query
     	if(d.queried)
-    		return "ffff00"
+    		return "0dfc00"
     	//is not in query
     	else
     		return "black"
