@@ -46,14 +46,9 @@ var data = JSON.parse(toString);
   .data(data.links)
   .enter().append("line")
   .attr("fill", "black")
-    .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
-	
-	link.append("text")
-    .attr("class","system")
-    .attr("fill","black")
-    .text(function(d) {
-      return d.edge;
-     });
+    .attr("stroke-width", function(d) { return Math.sqrt(d.value); })
+    .attr("id",function(d,i) {return 'link	'+i});
+
 
 var node = svg.append("g")
     .attr("class", "nodes")
@@ -173,35 +168,7 @@ var node = svg.append("g")
       return d.message.substring(45,60) + "...";
      });
 
-	var edgepaths = svg.selectAll(".edgepath")
-    .data(data.links)
-    .enter()
-    .append('path')
-    .attr({'d': function(d) {return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y},
-           'class':'edgepath',
-           'fill-opacity':0,
-           'stroke-opacity':0,
-           'fill':'blue',
-           'stroke':'red',
-           'id':function(d,i) {return 'edgepath'+i}})
-    .style("pointer-events", "none");
 
-var edgelabels = svg.selectAll(".edgelabel")
-    .data(data.links)
-    .enter()
-    .append('text')
-    .style("pointer-events", "none")
-    .attr({'class':'edgelabel',
-           'id':function(d,i){return 'edgelabel'+i},
-           'dx':80,
-           'dy':0,
-           'font-size':10,
-           'fill':'#aaa'});
-
-edgelabels.append('textPath')
-    .attr('xlink:href',function(d,i) {return '#edgepath'+i})
-    .style("pointer-events", "none")
-    .text(function(d,i){return 'label '+i});
     
     
 function ticked() {
@@ -214,22 +181,6 @@ link
 node
 	.attr("transform",function(d){return "translate(" + d.x + "," + d.y + ")"});
 
-edgepaths
-	.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
-	//console.log(d)
-	return path});       
-
-edgelabels.attr('transform',function(d,i){
-    if (d.target.x<d.source.x){
-        bbox = this.getBBox();
-        rx = bbox.x+bbox.width/2;
-        ry = bbox.y+bbox.height/2;
-        return 'rotate(180 '+rx+' '+ry+')';
-        }
-    else 
-        return 'rotate(0)';
-        
-})
     
 
 
